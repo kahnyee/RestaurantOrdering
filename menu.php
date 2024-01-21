@@ -226,43 +226,7 @@
         </main>
     </div>
 </div>
-<script>
-    function toggleSidebar() {
-        let sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("show");
-        let mobileBg = document.getElementById("mobileBg");
-        mobileBg.classList.toggle("show");
-    }
-    document.addEventListener('click', function(event) {
-        let sidebar = document.getElementById("sidebar");
-        let clickInsideSidebar = sidebar.contains(event.target);
-        let clickOnToggleButton = event.target.matches('.btn.btn-primary') || event.target.matches('.btn.btn-primary i');
-        if (!clickInsideSidebar && !clickOnToggleButton && sidebar.classList.contains('show')) {
-            sidebar.classList.remove('show');
-            let mobileBg = document.getElementById("mobileBg");
-            mobileBg.classList.remove("show");
-            let mainContent = document.querySelector(".scrollable-section");
-            let navBar = document.querySelector(".sidebar");
-            mainContent.classList.remove("shift-down");
-            navBar.classList.remove("shift-down");
-        }
-    });
-    let sidebarLinks = document.querySelectorAll('#sidebar .nav-link');
-    sidebarLinks.forEach(link => {
-        link.addEventListener('click', function() {
-            let sidebar = document.getElementById("sidebar");
-            if (sidebar.classList.contains('show')) {
-                sidebar.classList.remove('show');
-                let mobileBg = document.getElementById("mobileBg");
-                mobileBg.classList.remove("show");
-                let mainContent = document.querySelector(".scrollable-section");
-                let navBar = document.querySelector(".sidebar");
-                mainContent.classList.remove("shift-down");
-                navBar.classList.remove("shift-down");
-            }
-        });
-    });
-</script>
+<script src="sidebar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
