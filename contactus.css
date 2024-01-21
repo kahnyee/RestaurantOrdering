@@ -1,0 +1,35 @@
+
+.logo {
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    max-width: 150px; /* Default size for larger screens */
+}
+
+.social-icons i {
+    font-size: 2rem; /* Larger size for desktop view */
+    margin: 0 12px; /* Spacing around icons for desktop view */
+}
+
+/* Responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .logo {
+        max-width: 100px; /* Smaller logo for mobile */
+    }
+
+    .social-icons i {
+        font-size: 2.5rem; /* Even larger icons for better touch targets on mobile */
+        margin: 0 15px; /* Increase spacing for touch targets on mobile */
+    }
+
+    #contact h2 {
+        margin-top: 2rem; /* Add more space above the "Contact Us" heading on mobile */
+    }
+}
+
+/* This applies to all screens */
+.contact-detail img {
+    max-width: 100%; /* Make restaurant images responsive */
+    height: auto;
+    margin-bottom: 1rem;
+}
