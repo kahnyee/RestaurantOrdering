@@ -2,3 +2,53 @@ body {
     background-color: #494949;
     color: #B0B0B0;
 }
+
+ .sidebar {
+     background-color: #303030; /* Dark background for sidebar */
+     color: white; /* White text color */
+     min-height: 100vh; /* Full height */
+ }
+
+.sidebar-sticky {
+    position: sticky;
+    top: 0; /* Stick to the top of the viewport */
+    padding-top: 20px;
+}
+
+.sidebar h2, .sidebar h1 {
+    text-align: center;
+}
+
+.sidebar h2 {
+    font-size: 1.5rem; /* Adjust size as needed */
+    margin-bottom: 0;
+}
+
+.sidebar h1 {
+    font-size: 3rem; /* Adjust size as needed */
+    margin-top: 0;
+}
+
+.nav-link {
+    color: white; /* White text for links */
+    padding: 10px 15px; /* Spacing for links */
+}
+
+.nav-link:hover, .nav-link:focus {
+    color: #f8f9fa; /* Lighter text on hover */
+    text-decoration: none;
+    background-color: #495057; /* Dark background for active state */
+}
+
+.nav-item {
+    margin-bottom: 1rem;
+}
+
+.nav-item:last-child {
+    margin-bottom: 0;
+}
+
+.nav-item .nav-link.active {
+    background-color: #495057; /* Dark background for active state */
+    border-radius: 0.25rem;
+}
