@@ -136,13 +136,50 @@
         <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <section id="seasonals">
                 <h2 style="margin-top: 27px;">Contact Us</h2>
-                <p>Details about the contacts</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+
+                <table style="margin-left: auto; margin-right:auto">
+                    <tr>
+                        <td><img src="logo.png" alt="Delicious Food Logo" style="padding-right: 50px; scale: 80%"></td>
+                        <td style="font-size: x-large">
+                            <a href="mailto:deliciousfood@contactus.org" style="color: #B0B0B0">DeliciousFood@contactus.org</a>
+                            <br><br>
+                            Dr Ong Shern Wen Benjamin <br>
+                            CEO
+                            <br><br>
+                            +65 8246 8078 <br> <br>
+                            <a href="https://www.facebook.com"><img src="facebook.png" alt="Facebook" style="height: 29px; scale: 1.1"></a>
+                            <a href="https://www.instagram.com"><img src="instagram.webp" alt="Instagram"  style="height: 30px"></a>
+                            <a href="https://www.twitter.com"><img src="X_logo.png" alt="X" style="height: 29px"></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <hr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="restaurant.png" alt="Restaurant 1">
+                            <br><br>
+                            BenDover Road 7 <br>
+                            177269 <br><br>
+                            +65 9027 7661
+                        </td>
+                        <td>
+                            <img src="restaurant2.png" alt="Restaurant 2">
+                            <br><br>
+                            MBS <br>
+                            182991 <br><br>
+                            +65 8773 4691
+                        </td>
+                    </tr>
+                </table>
             </section>
         </main>
     </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
 </body>
 </html>
