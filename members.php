@@ -135,8 +135,8 @@
         <!-- Main Content Area -->
         <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
             <section id="seasonals">
-                <h2 style="margin-top: 27px;">Members</h2>
-                <p>Details about the menu items...</p>
+                <h2 style="margin-top: 27px;">Login</h2>
+                <p>Details about the login...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
         </main>

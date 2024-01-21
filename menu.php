@@ -6,18 +6,26 @@
     <title>Delicious Food Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="common.css" rel="stylesheet" type="text/css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"> <!-- Font Awesome for icons -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> <!-- Google Fonts for custom font -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <style>
+        .scrollable-section::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollable-section {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            max-height: 100vh;
+            overflow-y: auto;
+        }
         .sidebar {
-            background-color: #303030; /* Dark background color */
+            background-color: #303030;
             color: white;
-            min-height: 100vh;
-            font-family: 'Roboto', sans-serif; /* Custom font */
+            font-family: 'Roboto', sans-serif;
         }
         .sidebar-sticky {
             position: sticky;
-            top: 10px;
+            top: 0;
             padding-top: 20px;
         }
         .sidebar h2, .sidebar h1 {
@@ -69,105 +77,192 @@
         section h2 {
             font-size: 2.5rem;
         }
+        @media (max-width: 767px) {
+            .sidebar {
+                position: fixed;
+                top: 0;
+                left: -250px;
+                bottom: 0;
+                z-index: 1000;
+                width: 250px;
+                transition: left 0.3s;
+            }
+            .sidebar.show {
+                left: 0;
+            }
+            .btn.btn-primary.d-md-none {
+                position: fixed;
+                left: 8px;
+                top: 8px;
+                z-index: 1050;
+                background-color: transparent;
+                color: #B0B0B0;
+                text-align: left;
+                border: none;
+                padding-top: 5px;
+                padding-left: 15px;
+                padding-right: 15px;
+            }
+            .mobile-bg {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 50px;
+                background-color: #303030;
+                z-index: 1049;
+                opacity: 1;
+            }
+        }
+        @media (max-width: 767px) {
+            .sidebar {
+                position: fixed;
+                top: 25px; /* Shift sidebar down by 35px */
+                left: -250px;
+                bottom: 0;
+                z-index: 1000;
+                width: 250px;
+                transition: left 0.3s;
+            }
+            .scrollable-section {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+                max-height: calc(100vh - 35px);
+                overflow-y: auto;
+                margin-top: 25px;
+            }
+        }
     </style>
 </head>
 <body>
+<button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
+    <i class="fas fa-bars"></i>
+</button>
+<div class="mobile-bg" id="mobileBg"></div>
 <div class="container-fluid">
     <div class="row">
-        <!-- Sidebar -->
-        <nav class="col-md-3 col-lg-2 d-md-block sidebar"> <!-- Remove bg-gradient to keep the dark color theme -->
+        <nav class="col-md-3 col-lg-2 d-md-block sidebar scrollable-section shift-down" id="sidebar">
             <div class="sidebar-sticky">
-                <h2>Table No:</h2>
-                <h1>69</h1>
+                <h2 style="padding-top: 13px">Table No:</h2>
+                <h1>01</h1>
                 <div class="sidebar-divider"></div>
-
                 <div class="nav-title">Menu</div>
                 <ul class="nav flex-column">
                     <li class="nav-item nav-subitem">
                         <a href="#seasonals" class="nav-link">
-                            <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals <!-- Add icons -->
+                            <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
                         <a href="#appetisers" class="nav-link">
-                            <i class="fas fa-utensils mr-2"></i> &nbsp;&nbsp;&nbsp;Appetisers <!-- Add icons -->
+                            <i class="fas fa-utensils mr-2"></i> &nbsp;&nbsp;&nbsp;Appetisers
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
                         <a href="#mains" class="nav-link">
-                            <i class="fas fa-hamburger mr-2"></i> &nbsp;&nbsp;&nbsp;Mains <!-- Add icons -->
+                            <i class="fas fa-hamburger mr-2"></i> &nbsp;&nbsp;&nbsp;Mains
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
                         <a href="#sides" class="nav-link">
-                            <i class="fas fa-utensil-spoon mr-2"></i> &nbsp;&nbsp;&nbsp;Sides <!-- Add icons -->
+                            <i class="fas fa-utensil-spoon mr-2"></i> &nbsp;&nbsp;&nbsp;Sides
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
                         <a href="#desserts" class="nav-link">
-                            <i class="fas fa-cookie mr-2"></i> &nbsp;&nbsp;&nbsp;Desserts <!-- Add icons -->
+                            <i class="fas fa-cookie mr-2"></i> &nbsp;&nbsp;&nbsp;Desserts
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
                         <a href="#drinks" class="nav-link">
-                            <i class="fas fa-coffee mr-2"></i> &nbsp;&nbsp;&nbsp;Drinks <!-- Add icons -->
+                            <i class="fas fa-coffee mr-2"></i> &nbsp;&nbsp;&nbsp;Drinks
                         </a>
                     </li>
                 </ul>
-
                 <div class="sidebar-divider"></div>
-
                 <div class="nav-title">Members</div>
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="members.php" class="nav-link">Personals</a></li>
                     <li class="nav-item"><a href="members.php" class="nav-link">Redeem</a></li>
                 </ul>
-
                 <div class="sidebar-divider"></div>
-
                 <ul class="nav flex-column">
                     <li class="nav-item"><a href="aboutus.php" class="nav-link">About Us</a></li>
-                    <li class="nav-item"><a href="contactus.php" class="nav-link">Contact Us</a></li>
+                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.php" class="nav-link">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
-
-        <!-- Main Content Area -->
-        <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+        <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <section id="seasonals">
-                <h2 style="padding-top: 27px;">Seasonals</h2>
+                <h2 style="padding-top: 30px;">Seasonals</h2>
                 <p>Details about the menu items...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="appetisers">
-                <h2 style="padding-top: 27px;">Appetisers</h2>
+                <h2 style="padding-top: 30px;">Appetisers</h2>
                 <p>Details about the menu items...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="mains">
-                <h2 style="padding-top: 27px;">Mains</h2>
+                <h2 style="padding-top: 30px;">Mains</h2>
                 <p>Details about the menu items...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="sides">
-                <h2 style="padding-top: 27px;">Sides</h2>
+                <h2 style="padding-top: 30px;">Sides</h2>
                 <p>Details about the menu items...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="desserts">
-                <h2 style="padding-top: 27px;">Desserts</h2>
+                <h2 style="padding-top: 30px;">Desserts</h2>
                 <p>Details about the menu items...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="drinks">
-                <h2 style="padding-top: 27px;">Drinks</h2>
+                <h2 style="padding-top: 30px;">Drinks</h2>
                 <p>Details about the menu items...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
         </main>
     </div>
 </div>
-
+<script>
+    function toggleSidebar() {
+        let sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("show");
+        let mobileBg = document.getElementById("mobileBg");
+        mobileBg.classList.toggle("show");
+    }
+    document.addEventListener('click', function(event) {
+        let sidebar = document.getElementById("sidebar");
+        let clickInsideSidebar = sidebar.contains(event.target);
+        let clickOnToggleButton = event.target.matches('.btn.btn-primary') || event.target.matches('.btn.btn-primary i');
+        if (!clickInsideSidebar && !clickOnToggleButton && sidebar.classList.contains('show')) {
+            sidebar.classList.remove('show');
+            let mobileBg = document.getElementById("mobileBg");
+            mobileBg.classList.remove("show");
+            let mainContent = document.querySelector(".scrollable-section");
+            let navBar = document.querySelector(".sidebar");
+            mainContent.classList.remove("shift-down");
+            navBar.classList.remove("shift-down");
+        }
+    });
+    let sidebarLinks = document.querySelectorAll('#sidebar .nav-link');
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            let sidebar = document.getElementById("sidebar");
+            if (sidebar.classList.contains('show')) {
+                sidebar.classList.remove('show');
+                let mobileBg = document.getElementById("mobileBg");
+                mobileBg.classList.remove("show");
+                let mainContent = document.querySelector(".scrollable-section");
+                let navBar = document.querySelector(".sidebar");
+                mainContent.classList.remove("shift-down");
+                navBar.classList.remove("shift-down");
+            }
+        });
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
