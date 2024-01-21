@@ -139,7 +139,7 @@
 
                 <table style="margin-left: auto; margin-right:auto">
                     <tr>
-                        <td><img src="logo.png" alt="Delicious Food Logo" style="padding-right: 50px; scale: 80%"></td>
+                        <td><img src="assets/logo.png" alt="Delicious Food Logo" style="padding-right: 50px; scale: 80%"></td>
                         <td style="font-size: x-large">
                             <a href="mailto:deliciousfood@contactus.org" style="color: #B0B0B0">DeliciousFood@contactus.org</a>
                             <br><br>
@@ -147,9 +147,9 @@
                             CEO
                             <br><br>
                             +65 8246 8078 <br> <br>
-                            <a href="https://www.facebook.com"><img src="facebook.png" alt="Facebook" style="height: 29px; scale: 1.1"></a>
-                            <a href="https://www.instagram.com"><img src="instagram.webp" alt="Instagram"  style="height: 30px"></a>
-                            <a href="https://www.twitter.com"><img src="X_logo.png" alt="X" style="height: 29px"></a>
+                            <a href="https://www.facebook.com"><img src="assets/facebook.png" alt="Facebook" style="height: 29px; scale: 1.1"></a>
+                            <a href="https://www.instagram.com"><img src="assets/instagram.webp" alt="Instagram" style="height: 30px"></a>
+                            <a href="https://www.twitter.com"><img src="assets/X_logo.png" alt="X" style="height: 29px"></a>
                         </td>
                     </tr>
                     <tr>
@@ -159,14 +159,14 @@
                     </tr>
                     <tr>
                         <td>
-                            <img src="restaurant.png" alt="Restaurant 1">
+                            <img src="assets/restaurant.png" alt="Restaurant 1">
                             <br><br>
                             BenDover Road 7 <br>
                             177269 <br><br>
                             +65 9027 7661
                         </td>
                         <td>
-                            <img src="restaurant2.png" alt="Restaurant 2">
+                            <img src="assets/restaurant2.png" alt="Restaurant 2">
                             <br><br>
                             MBS <br>
                             182991 <br><br>
