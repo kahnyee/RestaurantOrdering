@@ -1,12 +1,20 @@
 @media (max-width: 768px) {
     .logo {
-        width: 250px; /* or whatever size you prefer */
-        height: auto; /* maintain aspect ratio */
+        width: 250px;
+        height: auto;
+        margin: 50px;
     }
 
     .contact-detail img {
-        width: 100%; /* make images responsive */
-        max-width: 250px; /* maximum size */
-        height: auto; /* maintain aspect ratio */
+        width: 100%;
+        max-width: 325px;
+        height: auto;
     }
+}
+.contact-detail img {
+    width: 400px;
+    height: auto;
+}
+.locations-header {
+    margin-top: 200px;
 }

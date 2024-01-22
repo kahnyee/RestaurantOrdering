@@ -96,7 +96,7 @@
 
 
                     </div>
-                    <h2 class="text-center mb-4">Locations</h2>
+                    <h2 class="text-center mb-4 locations-header">Locations</h2>
                     <div class="row justify-content-center">
                         <div class="col-md-6 mb-4">
                             <div class="contact-detail text-center">
