@@ -75,13 +75,13 @@
             <section id="contact" class="pt-5">
                 <div class="container">
                     <div class="text-center mb-5">
-                        <h2>Contact Us</h2>
-                        <p>Get in touch with us for any queries or reservations.</p>
+                        <h2 class="contact">Contact Us</h2>
+                        <p style="font-size: 1.1rem; padding-top: 5px; padding-bottom: 10px">Get in touch with us for any queries or reservations.</p>
                         <img src="assets/logo.png" alt="Delicious Food Logo" class="logo mb-3">
-                        <h3>Delicious Food</h3>
+                        <h3 style="padding-top: 10px; padding-bottom: 5px">Delicious Food</h3>
                         <p>Alessandro Bianchi<br>CEO</p>
                         <p>+65 6246 8078</p>
-                        <p><a href="mailto:deliciousfood@contactus.org">DeliciousFood@contactus.org</a></p>
+                        <p style="padding-top: 10px"><a href="mailto:deliciousfood@contactus.org">DeliciousFood@contactus.org</a></p>
                         <div class="social-icons">
                             <a href="https://www.facebook.com" class="mr-2">
                                 <img src="assets/facebook.png" alt="Facebook" class="social-icon-image" style="margin-right: 10px;">
@@ -94,20 +94,20 @@
                             </a>
                         </div>
 
-
+                        <hr style="margin-top: 80px">
                     </div>
-                    <h2 class="text-center mb-4 locations-header">Locations</h2>
+                    <h2 class="text-center mb-4 locations-header" style="padding-bottom: 15px">Locations</h2>
                     <div class="row justify-content-center">
                         <div class="col-md-6 mb-4">
-                            <div class="contact-detail text-center">
+                            <div class="contact-detail text-center restaurant1">
                                 <img src="assets/restaurant1.webp" alt="Restaurant 1" class="img-fluid mb-2">
-                                <p>BenDover Road 7, 177269<br>+65 9027 7661</p>
+                                <p style="padding-top: 10px">Dover Road 7, S177269<br>+65 9027 7661</p>
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
-                            <div class="contact-detail text-center">
+                            <div class="contact-detail text-center restaurant2">
                                 <img src="assets/restaurant2.jpg" alt="Restaurant 2" class="img-fluid mb-2">
-                                <p>MBS, 182991<br>+65 8773 4691</p>
+                                <p style="padding-top: 10px">Marina Bay Sands, S182991<br>+65 8773 4691</p>
                             </div>
                         </div>
                     </div>

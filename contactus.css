@@ -1,6 +1,6 @@
 @media (max-width: 768px) {
     .logo {
-        width: 250px;
+        width: 150px;
         height: auto;
         margin: 50px;
     }
@@ -10,11 +10,17 @@
         max-width: 325px;
         height: auto;
     }
+    .contact {
+        padding-top: 50px;
+    }
 }
 .contact-detail img {
-    width: 400px;
+    width: 360px;
     height: auto;
 }
 .locations-header {
-    margin-top: 200px;
+    margin-top: -12px;
+}
+.contact {
+    margin-top: -15px;
 }
