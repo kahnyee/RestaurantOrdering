@@ -57,8 +57,8 @@
                 <div class="sidebar-divider"></div>
                 <div class="nav-title">Members</div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="members.php" class="nav-link">Personals</a></li>
-                    <li class="nav-item"><a href="members.php" class="nav-link">Redeem</a></li>
+                    <li class="nav-item"><a href="auto_validation_personals.html" class="nav-link">Personals</a></li>
+                    <li class="nav-item"><a href="auto_validation_redeem.html" class="nav-link">Redeem</a></li>
                 </ul>
                 <div class="sidebar-divider"></div>
                 <ul class="nav flex-column">
