@@ -62,8 +62,8 @@
                 </ul>
                 <div class="sidebar-divider"></div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="aboutus.php" class="nav-link">About Us</a></li>
-                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.php" class="nav-link">Contact Us</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
+                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.html" class="nav-link">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
