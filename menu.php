@@ -1,3 +1,4 @@
+<?php include_once 'add_order.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <link href="common.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="menu.css" rel="stylesheet">
 </head>
 <body>
 <button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
@@ -70,9 +72,28 @@
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <section id="seasonals">
                 <h2 style="padding-top: 30px;">Seasonals</h2>
-                <p>Details about the menu items...</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+                <div class="slideshow-container">
+                    <!-- Slides -->
+                    <div class="mySlides fade" onclick="addToOrder(1);">
+                        <img src="assets/Valentine_beef.png" style="width:100%">
+                        <div class="text">Valentine Beef <br>$50</br></div>
+                    </div>
+
+                    <div class="mySlides fade" onclick="addToOrder(2);">
+                        <img src="assets/korean_beef.jpg" style="width:100%">
+                        <div class="text">BULGOGI <br> $23.99</div>
+                    </div>
+                    <!-- Grey Dots -->
+                    <div class="dot-container">
+                        <span class="dot" onclick="currentSlide(1)"></span> <!-- for the first slide -->
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <!-- ... more dots as needed -->
+                    </div>
+
+                </div>
             </section>
+
+
             <section id="appetisers">
                 <h2 style="padding-top: 30px;">Appetisers</h2>
                 <p>Details about the menu items...</p>
@@ -102,6 +123,7 @@
     </div>
 </div>
 <script src="sidebar.js"></script>
+<script src="menu.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
