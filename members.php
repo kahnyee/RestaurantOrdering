@@ -65,65 +65,47 @@
                     <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
                     <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.html" class="nav-link">Contact Us</a></li>
                 </ul>
+                <div style="margin-bottom: 2000px"></div>
             </div>
         </nav>
+
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
-            <div class="container mt-5">
-                <!-- Tabs for Sign In and Sign Up -->
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#signin">Sign In</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#signup">Sign Up</a>
-                    </li>
-                </ul>
-
-                <!-- Tab panes -->
-                <div class="tab-content">
-                    <!-- Sign In Tab -->
-                    <div class="tab-pane active" id="signin">
-                        <div class="container mt-3">
-                            <form id="login-form">
-                                <div class="mb-3">
-                                    <label for="user-email" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="user-email" placeholder="Enter email" required>
+            <div class="d-flex align-items-center justify-content-center" style="min-height: 90vh;">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="signup-form">
+                                <h1 class="text-center" style="margin-bottom: 10px;">User Login</h1>
+                                <p class="text-center">Welcome back!</p>
+                                <form id="loginForm" onsubmit="event.preventDefault(); validateLogin();">
+                                    <div class="form-group" style="margin-bottom: 10px">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" required>
+                                    </div>
+                                    <button type="submit" class="btn-primary btn-block mt-4" style="background-color: #303030; color: #B0B0B0; height: 35px; width: 70px">Login</button>
+                                </form>
+                                <div class="text-center mt-3">
+                                    Haven't created an account? <a href="membersSignUp.php">Sign up here</a>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="user-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="user-password" placeholder="Password" required>
-                                </div>
-                                <button type="submit" class="btn btn-primary">Login</button>
-                            </form>
-                        </div>
-                    </div>
-
-                    <!-- Sign Up Tab -->
-                    <div class="tab-pane fade" id="signup">
-                        <div class="container mt-3">
-                            <form id="signup-form">
-                                <div class="mb-3">
-                                    <label for="new-user-email" class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="new-user-email" placeholder="Enter email" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="new-user-password" class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="new-user-password" placeholder="Password" required>
-                                </div>
-                                <button type="submit" class="btn btn-success">Sign Up</button>
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </main>
+
     </div>
 </div>
 <!-- Firebase Authentication -->
 
 <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyCGlbYNPvPFE7ByacA1SdeA2mUHqbE_vxg",
@@ -135,40 +117,26 @@
         measurementId: "G-ZG7EGGBSS4"
     };
 
-    // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
     const auth = getAuth(app);
 
-    // Sign Up Event
-    document.getElementById('signup-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const email = document.getElementById('new-user-email').value;
-        const password = document.getElementById('new-user-password').value;
+    async function validateLogin() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
 
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                window.location.href = 'redeem.php'; // Redirect to redeem.php
-            })
-            .catch((error) => {
-                // Handle Errors
-                console.error('Error:', error.message);
-            });
-    });
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            alert("Login successful!");
+            window.location.href = 'personalised.php';
+        } catch (error) {
+            alert("Invalid email or password.");
+        }
+    }
 
-    // Sign In Event
-    document.getElementById('login-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-        const email = document.getElementById('user-email').value;
-        const password = document.getElementById('user-password').value;
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                // Signed in
-                window.location.href = 'redeem.php'; // Redirect to redeem.php
-            })
-            .catch((error) => {
-                console.error('Error:', error.message);
-            });
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        validateLogin();
     });
 </script>
 

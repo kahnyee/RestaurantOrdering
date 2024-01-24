@@ -3,14 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Us</title>
+    <title>Members Sign Up</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="common.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <link href="contactus.css" rel="stylesheet">
 </head>
-
 <body>
 <button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
     <i class="fas fa-bars"></i>
@@ -67,55 +65,90 @@
                     <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
                     <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.html" class="nav-link">Contact Us</a></li>
                 </ul>
+                <div style="margin-bottom: 2000px"></div>
             </div>
         </nav>
 
-        <!-- Main Content Area -->
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
-            <section id="contact" class="pt-5">
-                <div class="container">
-                    <div class="text-center mb-5">
-                        <h2 class="contact">Contact Us</h2>
-                        <p style="font-size: 1.1rem; padding-top: 5px; padding-bottom: 10px">Get in touch with us for any queries or reservations.</p>
-                        <img src="assets/logo.png" alt="Delicious Food Logo" class="logo mb-3">
-                        <h3 style="padding-top: 10px; padding-bottom: 5px">Delicious Food</h3>
-                        <p>Alessandro Bianchi<br>CEO</p>
-                        <p>+65 6246 8078</p>
-                        <p style="padding-top: 10px"><a href="mailto:deliciousfood@contactus.org">DeliciousFood@contactus.org</a></p>
-                        <div class="social-icons">
-                            <a href="https://www.facebook.com" class="mr-2" style="font-size: 0">
-                                <img src="assets/facebook.png" alt="Facebook" class="social-icon-image" style="margin-right: 10px;">
-                            </a>
-                            <a href="https://www.instagram.com" class="mr-2" style="font-size: 0">
-                                <img src="assets/instagram.png" alt="Instagram" class="social-icon-image" style="margin-right: 10px;">
-                            </a>
-                            <a href="https://www.twitter.com" class="mr-2" style="font-size: 0">
-                                <img src="assets/twitter.png" alt="Twitter" class="social-icon-image">
-                            </a>
-                        </div>
-
-                        <hr style="margin-top: 70px">
-                    </div>
-                    <h2 class="text-center mb-4 locations-header" style="padding-bottom: 15px">Locations</h2>
-                    <div class="row justify-content-center">
-                        <div class="col-md-6 mb-4">
-                            <div class="contact-detail text-center restaurant1">
-                                <img src="assets/restaurant1.webp" alt="Restaurant 1" class="img-fluid mb-2">
-                                <p style="padding-top: 10px">Dover Road 7, S177269<br>+65 9027 7661</p>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-4">
-                            <div class="contact-detail text-center restaurant2">
-                                <img src="assets/restaurant2.jpg" alt="Restaurant 2" class="img-fluid mb-2">
-                                <p style="padding-top: 10px">Marina Bay Sands, S182991<br>+65 8773 4691</p>
+            <div class="d-flex align-items-center justify-content-center" style="min-height: 90vh;">
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <div class="signup-form">
+                                <h1 class="text-center" style="margin-bottom: 10px;">Sign Up</h1>
+                                <p class="text-center">Redeem points and enjoy personalized menus!</p>
+                                <form id="signupForm" onsubmit="event.preventDefault(); validatePassword();">
+                                    <div class="form-group" style="margin-bottom: 10px">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="form-group" style="margin-bottom: 10px">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" name="password" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="confirm-password">Confirm Password</label>
+                                        <input type="password" class="form-control" id="confirm-password" name="confirm_password" required>
+                                    </div>
+                                    <button type="submit" class="btn-primary btn-block mt-4" style="background-color: #303030; color: #B0B0B0; height: 35px; width: 90px">Sign Up</button>
+                                </form>
+                                <div class="text-center mt-3">
+                                    Already have an account? <a href="members.php">Login here</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
         </main>
+
     </div>
 </div>
+<!-- Firebase Authentication -->
+
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCGlbYNPvPFE7ByacA1SdeA2mUHqbE_vxg",
+        authDomain: "deliciousfood-c9efa.firebaseapp.com",
+        projectId: "deliciousfood-c9efa",
+        storageBucket: "deliciousfood-c9efa.appspot.com",
+        messagingSenderId: "682668950894",
+        appId: "1:682668950894:web:e1d6e07ade038a3ab32d7f",
+        measurementId: "G-ZG7EGGBSS4"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth(app);
+
+    async function validatePassword() {
+        let email = document.getElementById("email").value;
+        let password = document.getElementById("password").value;
+        let confirmPassword = document.getElementById("confirm-password").value;
+
+        if (password === confirmPassword) {
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                alert("Signup successful!");
+                window.location.href = 'personalised.php';
+            } catch (error) {
+                alert("Account already exist");
+            }
+        } else {
+            alert("Passwords do not match.");
+        }
+    }
+
+    document.getElementById("signupForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        validatePassword();
+    });
+</script>
+
 <script src="sidebar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
