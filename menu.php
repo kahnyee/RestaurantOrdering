@@ -8,6 +8,7 @@
     <link href="common.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="menu.css" rel="stylesheet">
 </head>
 <body>
 <button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
@@ -57,22 +58,40 @@
                 <div class="sidebar-divider"></div>
                 <div class="nav-title">Members</div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="auto_validation_personals.html" class="nav-link">Personals</a></li>
-                    <li class="nav-item"><a href="auto_validation_redeem.html" class="nav-link">Redeem</a></li>
+                    <li class="nav-item"><a href="members.php" class="nav-link">Personals</a></li>
+                    <li class="nav-item"><a href="members.php" class="nav-link">Redeem</a></li>
                 </ul>
                 <div class="sidebar-divider"></div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
-                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.html" class="nav-link">Contact Us</a></li>
+                    <li class="nav-item"><a href="aboutus.php" class="nav-link">About Us</a></li>
+                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.php" class="nav-link">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <section id="seasonals">
                 <h2 style="padding-top: 30px;">Seasonals</h2>
-                <p>Details about the menu items...</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+                <div class="slideshow-container">
+                    <!-- Slides -->
+                    <div class="mySlides fade">
+                        <img src="assets/Valentine_beef.png" style="width:100%">
+                        <div class="text">Valentine Beef <br>$50</br></div>
+                    </div>
+
+                    <div class="mySlides fade">
+                        <img src="assets/Lobster%20done%20right.jpeg" style="width:100%">
+                        <div class="text">Lobster <br>$89.99</br></div>
+                    </div>
+                    <!-- Grey Dots -->
+                    <div class="dot-container">
+                        <span class="dot" onclick="currentSlide(1)"></span> <!-- for the first slide -->
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <!-- ... more dots as needed -->
+                    </div>
+
+                </div>
             </section>
+
             <section id="appetisers">
                 <h2 style="padding-top: 30px;">Appetisers</h2>
                 <p>Details about the menu items...</p>
@@ -101,7 +120,15 @@
         </main>
     </div>
 </div>
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<!-- Then load your custom script -->
+<script src="menu.js"></script>
 <script src="sidebar.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="menu_functions.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

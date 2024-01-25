@@ -1,0 +1,69 @@
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Slides */
+.mySlides {
+    display: none;
+    text-align: center;
+    position: relative;
+}
+
+/* Image Styling */
+.mySlides img {
+    width: 100%; /* Adjust width as needed */
+    max-height: 500px; /* Set a fixed height */
+    object-fit: cover; /* This will ensure the image covers the area without distortion */
+}
+
+/* Text below image */
+.mySlides .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Optional for better visibility */
+    border-radius: 5px;
+}
+
+/* Grey Dots Container */
+.dot-container {
+    text-align: center;
+    margin-top: 20px; /* Adjust space above dots */
+}
+
+/* Grey Dots */
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 0px; /* Increase side margin for easier clicking */
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer; /* Indicates clickable item */
+}
+
+.dot.active {
+    background-color: #b1dfbb; /* Active dot color */
+}
+
+.dot:hover {
+    background-color: #717171; /* Hover state color */
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 15s; /* Adjust duration as needed */
+}
+
+@keyframes fade {
+    0% {opacity: 1}
+    85% {opacity: 1} /* Keep the image fully visible for 85% of the time */
+    100% {opacity: 0}
+}
