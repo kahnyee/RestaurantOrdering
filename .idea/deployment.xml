@@ -2,24 +2,10 @@
 <project version="4">
   <component name="PublishConfigData" serverName="Restaurant" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="Labs">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
-      <paths name="Labtest">
-        <serverdata>
-          <mappings>
-            <mapping local="$PROJECT_DIR$" web="/" />
-          </mappings>
-        </serverdata>
-      </paths>
       <paths name="Restaurant">
         <serverdata>
           <mappings>
-            <mapping deploy="\" local="$PROJECT_DIR$" web="RestaurantOrdering" />
+            <mapping deploy="" local="$PROJECT_DIR$/.." web="" />
           </mappings>
         </serverdata>
       </paths>

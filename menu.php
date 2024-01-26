@@ -1,4 +1,3 @@
-<?php include_once 'add_order.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,13 +58,13 @@
                 <div class="sidebar-divider"></div>
                 <div class="nav-title">Members</div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="auto_validation_personals.html" class="nav-link">Personals</a></li>
-                    <li class="nav-item"><a href="auto_validation_redeem.html" class="nav-link">Redeem</a></li>
+                    <li class="nav-item"><a href="members.php" class="nav-link">Personals</a></li>
+                    <li class="nav-item"><a href="members.php" class="nav-link">Redeem</a></li>
                 </ul>
                 <div class="sidebar-divider"></div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
-                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.html" class="nav-link">Contact Us</a></li>
+                    <li class="nav-item"><a href="aboutus.php" class="nav-link">About Us</a></li>
+                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.php" class="nav-link">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
@@ -74,14 +73,14 @@
                 <h2 style="padding-top: 30px;">Seasonals</h2>
                 <div class="slideshow-container">
                     <!-- Slides -->
-                    <div class="mySlides fade" onclick="addToOrder(1);">
+                    <div class="mySlides fade">
                         <img src="assets/Valentine_beef.png" style="width:100%">
                         <div class="text">Valentine Beef <br>$50</br></div>
                     </div>
 
-                    <div class="mySlides fade" onclick="addToOrder(2);">
-                        <img src="assets/korean_beef.jpg" style="width:100%">
-                        <div class="text">BULGOGI <br> $23.99</div>
+                    <div class="mySlides fade">
+                        <img src="assets/Lobster%20done%20right.jpeg" style="width:100%">
+                        <div class="text">Lobster <br>$89.99</br></div>
                     </div>
                     <!-- Grey Dots -->
                     <div class="dot-container">
@@ -92,7 +91,6 @@
 
                 </div>
             </section>
-
 
             <section id="appetisers">
                 <h2 style="padding-top: 30px;">Appetisers</h2>
@@ -122,8 +120,15 @@
         </main>
     </div>
 </div>
-<script src="sidebar.js"></script>
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+<!-- Then load your custom script -->
 <script src="menu.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="sidebar.js"></script>
+<script src="menu_functions.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

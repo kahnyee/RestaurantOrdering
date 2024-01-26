@@ -1,9 +1,19 @@
+// Define variables for slides, dots, and the interval
 var slideIndex = 0;
-var slides = document.getElementsByClassName("mySlides");
-var dots = document.getElementsByClassName("dot");
-var slideInterval;
+var slides, dots, slideInterval;
+
+function setupSlideshow() {
+    // Get the slides and dots elements
+    slides = document.getElementsByClassName("mySlides");
+    dots = document.getElementsByClassName("dot");
+
+    // Initialize the slideshow
+    showSlides();
+    slideInterval = setInterval(showSlides, 15000); // Change image every 15 seconds
+}
 
 function currentSlide(n) {
+    // Adjust slideshow for specific slide
     clearInterval(slideInterval); // Clear the current interval
     slideIndex = n - 1; // Adjust for array index
     showSlides(); // Show the selected slide
@@ -13,40 +23,28 @@ function currentSlide(n) {
 function showSlides() {
     var i;
 
-    // Set all slides to not display
+    // Hide all slides
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
     }
 
+    // Increment slideIndex
     slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1} // Loop back to first slide
 
-    // If we've gone past the last slide, reset to the first slide
-    if (slideIndex > slides.length) {slideIndex = 1}
+    // Display the current slide
+    if (slides.length > 0) {
+        slides[slideIndex - 1].style.display = "block";
+    }
 
-    // Remove 'active' class from all dots
+    // Update dots to reflect the current slide
     for (i = 0; i < dots.length; i++) {
         dots[i].className = dots[i].className.replace(" active", "");
     }
-
-    // Display the current slide and set its corresponding dot as active
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
+    if (dots.length > 0 && slideIndex - 1 < dots.length) {
+        dots[slideIndex - 1].className += " active";
+    }
 }
 
-// Initialize the first slide and start the slideshow
-showSlides();
-slideInterval = setInterval(showSlides, 15000); // Change image every 15 seconds
-
-function addToOrder(itemId) {
-    var formData = new FormData();
-    formData.append('item_id', itemId);
-
-    fetch('/add_order.php', {  // Updated URL
-        method: 'POST',
-        body: formData
-    })
-        .then(response => response.text())
-        .then(data => alert(data))
-        .catch(error => console.error('Error:', error));
-}
-
+// Initialize the slideshow when the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", setupSlideshow);
