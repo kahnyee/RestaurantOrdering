@@ -70,20 +70,92 @@ function addDotsAndInitialize(slideshowContainer, totalItems) {
     // Reinitialize the slideshow logic since new slides and dots are added
     setupSlideshow();
 }
+function getAppetisers() {
+    const appetisersContainer = document.getElementById("appetisers");
+    appetisersContainer.innerHTML = '<h2 style="padding-top: 30px;">Appetisers</h2><div class="appetisers-grid"></div>';
+    const gridContainer = appetisersContainer.querySelector('.appetisers-grid');
+
+    // Define your appetiser collections here
+    const appetiserCollections = ["appetisers_1", "appetisers_2", "appetisers_3", "appetisers_4"]; // Add more as needed
+
+    appetiserCollections.forEach((collectionName) => {
+        const itemsRef = db.collection("Menu").doc("appetisers").collection(collectionName);
+
+        itemsRef.get().then((snapshot) => {
+            snapshot.forEach((doc) => {
+                const itemData = doc.data();
+                itemData.quantity = 0; // Initialize the quantity of the item
+                const itemDiv = document.createElement("div");
+                itemDiv.className = "appetiser-item";
+                itemDiv.innerHTML = `
+                    <img src="${itemData.imageURL}" style="width:100%">
+                    <div class="text">${itemData.food_name} <br>$${itemData.price}</br></div>
+                    <div class="quantity-controls">
+                        <span class="minus">-</span>
+                        <span class="quantity">${itemData.quantity}</span>
+                        <span class="plus">+</span>
+                    </div>
+                `;
+                // Plus icon click event
+                itemDiv.querySelector('.plus').addEventListener('click', function() {
+                    itemData.quantity++;
+                    itemDiv.querySelector('.quantity').textContent = itemData.quantity;
+                    addToOrder(itemData);
+                });
+                // Minus icon click event
+                itemDiv.querySelector('.minus').addEventListener('click', function() {
+                    if (itemData.quantity > 0) {
+                        itemData.quantity--;
+                        itemDiv.querySelector('.quantity').textContent = itemData.quantity;
+                        removeFromOrder(itemData);
+                    }
+                });
+
+                gridContainer.appendChild(itemDiv);
+            });
+        }).catch((error) => {
+            console.error(`Error getting items from ${collectionName}:`, error);
+        });
+    });
+}
+
+// Call the function to get appetiser items
+getAppetisers();
 
 // Call the function to get menu items
 getMenuItems();
 
 
 function addToOrder(item) {
-    currentOrder.push({
-        food_name: item.food_name,
-        price: item.price,
-        imageUrl: item.imageURL
-    });
-    console.log("Current Order:", currentOrder); // For debugging
-    // Here, you can also update the UI to reflect the current order
+    // Find the item in the currentOrder
+    let orderItem = currentOrder.find(order => order.food_name === item.food_name);
+    if (orderItem) {
+        orderItem.quantity += 1;
+    } else {
+        // Add new item to currentOrder
+        currentOrder.push({
+            ...item,
+            quantity: 1
+        });
+    }
+    console.log("Current Order:", currentOrder);
 }
 
-// Call the function to get menu items
-getMenuItems();
+function removeFromOrder(item) {
+    const orderItem = currentOrder.find(order => order.food_name === item.food_name);
+    if (orderItem && orderItem.quantity > 1) {
+        // Decrease the quantity
+        orderItem.quantity -= 1;
+    } else {
+        // Find the index of the item in the current order
+        const index = currentOrder.findIndex(order => order.food_name === item.food_name);
+        if (index !== -1) {
+            // Remove the item from the current order
+            currentOrder.splice(index, 1);
+        }
+    }
+    console.log("Current Order:", currentOrder);
+}
+
+
+
