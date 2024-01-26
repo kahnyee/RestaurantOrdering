@@ -69,6 +69,12 @@
             </div>
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
+            <div class="shopping-cart-container">
+                <a href="orders.php" class="shopping-cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-total-amount">$0</span>
+                </a>
+            </div>
             <section id="seasonals">
                 <h2 style="padding-top: 30px;">Seasonals</h2>
                 <div class="slideshow-container">
@@ -114,6 +120,11 @@
             </section>
             <section id="drinks">
                 <h2 style="padding-top: 30px;">Drinks</h2>
+                <p>Details about the menu items...</p>
+                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+            </section>
+            <section id="seasonals_main">
+                <h2 style="padding-top: 30px;">Seasonals</h2>
                 <p>Details about the menu items...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
