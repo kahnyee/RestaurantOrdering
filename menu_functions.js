@@ -18,36 +18,62 @@ const db = firebase.firestore();
 const currentOrder = [];
 
 function getMenuItems() {
-    const itemsRef = db.collection("Menu").doc("seasonals").collection("seasonal_1");
+    const seasonalsContainer = document.getElementById("seasonals");
+    seasonalsContainer.innerHTML = '<h2 style="padding-top: 30px;">Seasonals</h2><div class="slideshow-container"></div>';
+    const slideshowContainer = seasonalsContainer.querySelector('.slideshow-container');
 
-    itemsRef.get().then((itemSnapshot) => {
-        const seasonalsContainer = document.getElementById("seasonals");
-        seasonalsContainer.innerHTML = '<h2 style="padding-top: 30px;">Seasonals</h2><div class="slideshow-container"></div>';
+    // Define the collections to query
+    const collections = ["seasonal_1", "seasonal_2", "seasonal_3","seasonal_4","seasonal_5","seasonal_6","seasonal_7","seasonal_8"];
+    let totalItems = 0;
 
-        const slideshowContainer = seasonalsContainer.querySelector('.slideshow-container');
-
-        itemSnapshot.forEach((itemDoc) => {
-            const itemData = itemDoc.data();
-            const slideDiv = document.createElement("div");
-            slideDiv.className = "mySlides fade";
-            slideDiv.innerHTML = `
+    collections.forEach(collection => {
+        const itemsRef = db.collection("Menu").doc("seasonals").collection(collection);
+        itemsRef.get().then((itemSnapshot) => {
+            totalItems += itemSnapshot.size;
+            itemSnapshot.forEach((itemDoc) => {
+                const itemData = itemDoc.data();
+                const slideDiv = document.createElement("div");
+                slideDiv.className = "mySlides fade";
+                slideDiv.innerHTML = `
             <img src="${itemData.imageURL}" style="width:100%">
             <div class="text">${itemData.food_name} <br>$${itemData.price}</br></div>
         `;
-            slideDiv.addEventListener('click', function() {
-                console.log("Slide clicked:", itemData);
-                addToOrder(itemData);
+                slideDiv.addEventListener('click', function() {
+                    console.log("Slide clicked:", itemData);
+                    addToOrder(itemData);
+                });
+
+                slideshowContainer.appendChild(slideDiv);
             });
 
-            slideshowContainer.appendChild(slideDiv);
+            if (totalItems === collections.length) {
+                addDotsAndInitialize(slideshowContainer, totalItems);
+            }
+        }).catch((error) => {
+            console.error("Error getting items from", collection, ":", error);
         });
-
-        // Reinitialize the slideshow logic since new slides are added
-        setupSlideshow();
-    }).catch((error) => {
-        console.error("Error getting items:", error);
     });
 }
+
+function addDotsAndInitialize(slideshowContainer, totalItems) {
+    // Dynamically generate and append dots for each slide
+    const dotContainer = document.createElement('div');
+    dotContainer.className = 'dot-container';
+    for (let i = 0; i < totalItems; i++) {
+        const dot = document.createElement('span');
+        dot.className = 'dot';
+        dot.onclick = function() { currentSlide(i + 1); };
+        dotContainer.appendChild(dot);
+    }
+    slideshowContainer.appendChild(dotContainer);
+
+    // Reinitialize the slideshow logic since new slides and dots are added
+    setupSlideshow();
+}
+
+// Call the function to get menu items
+getMenuItems();
+
 
 function addToOrder(item) {
     currentOrder.push({

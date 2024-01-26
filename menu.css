@@ -41,7 +41,7 @@
 .dot {
     height: 15px;
     width: 15px;
-    margin: 0 0px; /* Increase side margin for easier clicking */
+    margin: 0 2px; /* Increase side margin for easier clicking */
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
