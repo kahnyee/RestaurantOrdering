@@ -304,9 +304,8 @@
     gap: 10px;
 }
 
-
-
-
-
-
-
+@media (max-width: 767px) {
+    .appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid {
+        grid-template-columns: 1fr;
+    }
+}

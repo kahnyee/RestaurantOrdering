@@ -1,7 +1,3 @@
-
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyCGlbYNPvPFE7ByacA1SdeA2mUHqbE_vxg",
     authDomain: "deliciousfood-c9efa.firebaseapp.com",
@@ -12,14 +8,13 @@ const firebaseConfig = {
     measurementId: "G-ZG7EGGBSS4"
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const currentOrder = [];
 
 function getMenuItems() {
-    const seasonalsContainer = document.getElementById("seasonals");
-    seasonalsContainer.innerHTML = '<h2 style="padding-top: 30px;">Seasonals</h2><div class="slideshow-container"></div>';
+    const seasonalsContainer = document.getElementById("seasonal");
+    seasonalsContainer.innerHTML = '<p style="height: 20px"></p><div class="slideshow-container"></div>';
     const slideshowContainer = seasonalsContainer.querySelector('.slideshow-container');
 
     // Define the collections to query
@@ -54,10 +49,6 @@ function getMenuItems() {
         });
     });
 }
-
-
-
-
 
 function addDotsAndInitialize(slideshowContainer, totalItems) {
     // Dynamically generate and append dots for each slide
@@ -324,11 +315,10 @@ function getDrinks() {
     });
 }
 function getSeasonalsMain() {
-    const seasonalsMainContainer = document.getElementById("seasonals_main");
-    seasonalsMainContainer.innerHTML = '<h2 style="padding-top: 30px;">Seasonals Main</h2><div class="seasonals-main-grid"></div>';
+    const seasonalsMainContainer = document.getElementById("seasonals");
+    seasonalsMainContainer.innerHTML = '<h2 style="padding-top: 30px;">Seasonals</h2><div class="seasonals-main-grid"></div>';
     const gridContainer = seasonalsMainContainer.querySelector('.seasonals-main-grid');
 
-    // Define your seasonals_main collections here
     const seasonalsMainCollections = ["seasonal_1", "seasonal_2", "seasonal_3", "seasonal_4", "seasonal_5", "seasonal_6", "seasonal_7", "seasonal_8"]; // Add more as needed
 
     seasonalsMainCollections.forEach((collectionName) => {
@@ -450,6 +440,3 @@ function updateCartTotal() {
     let totalAmount = currentOrder.reduce((total, item) => total + (item.quantity * item.price), 0);
     document.getElementById('cart-total-amount').textContent = `$${totalAmount.toFixed(2)}`;
 }
-
-
-
