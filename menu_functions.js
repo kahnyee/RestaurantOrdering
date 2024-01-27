@@ -163,11 +163,6 @@ function getMains() {
             console.error(`Error getting items from ${collectionName}:`, error);
         });
     });
-
-    // Add the styling for gridContainer if not already in your CSS
-    gridContainer.style.display = 'grid';
-    gridContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
-    gridContainer.style.gridGap = '10px';
 }
 function getSides() {
     const sidesContainer = document.getElementById("sides");
@@ -362,11 +357,6 @@ function getSeasonalsMain() {
             console.error(`Error getting items from ${collectionName}:`, error);
         });
     });
-
-    // Add the styling for gridContainer if not already in your CSS
-    gridContainer.style.display = 'grid';
-    gridContainer.style.gridTemplateColumns = 'repeat(2, 1fr)';
-    gridContainer.style.gridGap = '10px';
 }
 
 // Call the function to get seasonals_main items
