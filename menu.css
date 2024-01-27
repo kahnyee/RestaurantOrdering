@@ -76,7 +76,7 @@
 }
 
 .appetiser-item, .main-item, .side-item, .dessert-item, .drink-item, .seasonals-main-item {
-    background-color: #f5f5f5;
+    background-color: #3B3B3B;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -132,7 +132,7 @@
     right: 10px;
     z-index: 1000;
     background-color: #494949;
-    border: 2px solid pink;
+    border: 1px solid grey;
     padding: 5px 10px;
     border-radius: 5px;
 }
