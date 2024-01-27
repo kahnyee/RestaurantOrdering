@@ -162,4 +162,19 @@
         max-height: 250px;
         object-fit: cover;
     }
+
+    /* Ensure Shopping Cart Icon is visible in Mobile View */
+    .shopping-cart-container {
+        display: block; /* Ensures the container is displayed */
+        position: fixed;
+        top: 60px; /* Adjust position as needed */
+        left: auto; /* Adjust position as needed */
+        z-index: 1000;
+        background-color: #494949;
+        border: 2px solid pink;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
 }
+
