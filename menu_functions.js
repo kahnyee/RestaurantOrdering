@@ -18,37 +18,57 @@ function getMenuItems() {
     const slideshowContainer = seasonalsContainer.querySelector('.slideshow-container');
 
     // Define the collections to query
-    const collections = ["seasonal_1", "seasonal_2", "seasonal_3","seasonal_4","seasonal_5","seasonal_6","seasonal_7","seasonal_8"];
-    let totalItems = 0;
+    const collections = ["seasonal_1", "seasonal_2", "seasonal_3", "seasonal_4", "seasonal_5", "seasonal_6", "seasonal_7", "seasonal_8"];
+    let promises = [];
 
     collections.forEach(collection => {
         const itemsRef = db.collection("Menu").doc("seasonals").collection(collection);
-        itemsRef.get().then((itemSnapshot) => {
-            totalItems += itemSnapshot.size;
-            itemSnapshot.forEach((itemDoc) => {
-                const itemData = itemDoc.data();
-                const slideDiv = document.createElement("div");
-                slideDiv.className = "mySlides fade";
-                slideDiv.innerHTML = `
-                    <img src="${itemData.imageURL}" style="width:100%">
-                    <div class="text">${itemData.food_name} <br>$${itemData.price}</br></div>
-                `;
-                // Navigate to the seasonals_main anchor when a slide is clicked
-                slideDiv.addEventListener('click', function() {
-                    document.location = "#seasonals_main"; // Scrolls to the "seasonals_main" section
-                });
+        promises.push(itemsRef.get());
+    });
 
-                slideshowContainer.appendChild(slideDiv);
+    Promise.all(promises).then(allCollections => {
+        let items = [];
+        allCollections.forEach(collectionSnapshot => {
+            collectionSnapshot.forEach(itemDoc => {
+                items.push(itemDoc.data());
             });
-
-            if (totalItems === collections.length) {
-                addDotsAndInitialize(slideshowContainer, totalItems);
-            }
-        }).catch((error) => {
-            console.error("Error getting items from", collection, ":", error);
         });
+
+        createSlides(slideshowContainer, items);
+    }).catch(error => {
+        console.error("Error loading collections:", error);
     });
 }
+
+function createSlides(container, items) {
+    for (let i = 0; i < items.length; i += 2) {
+        if (items[i] && items[i + 1]) {
+            const itemData1 = items[i];
+            const itemData2 = items[i + 1];
+
+            const slideDiv = document.createElement("div");
+            slideDiv.className = "mySlides fade";
+            slideDiv.innerHTML = `
+                <div class="image-container">
+                    <img src="${itemData1.imageURL}" style="width:600px; height:400px;">
+                    <div class="text">${itemData1.food_name} $${itemData1.price}</div>
+                </div>
+                <div class="image-container">
+                    <img src="${itemData2.imageURL}" style="width:600px; height:400px;">
+                    <div class="text">${itemData2.food_name} $${itemData2.price}</div>
+                </div>
+            `;
+            slideDiv.addEventListener('click', function() {
+                document.location = "#seasonals_main";
+            });
+
+            container.appendChild(slideDiv);
+        }
+    }
+
+    addDotsAndInitialize(container, Math.ceil(items.length / 2));
+}
+
 
 function addDotsAndInitialize(slideshowContainer, totalItems) {
     // Dynamically generate and append dots for each slide
