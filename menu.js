@@ -7,8 +7,14 @@ function setupSlideshow() {
     slides = document.getElementsByClassName("mySlides");
     dots = document.getElementsByClassName("dot");
 
+    // Reset slideIndex to 0 to start from the first slide, especially after dynamic addition
+    slideIndex = 0;
+
     // Initialize the slideshow
     showSlides();
+
+    // Clear existing interval and set a new one
+    clearInterval(slideInterval);
     slideInterval = setInterval(showSlides, 15000); // Change image every 15 seconds
 }
 
@@ -46,5 +52,5 @@ function showSlides() {
     }
 }
 
-// Initialize the slideshow when the DOM is fully loaded
-document.addEventListener("DOMContentLoaded", setupSlideshow);
+// Ensure this function is called after dynamically adding slides in your menu_functions.js
+// setupSlideshow();

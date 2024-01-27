@@ -70,13 +70,17 @@
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <section id="orders">
                 <h2 style="padding-top: 30px;">Order List</h2>
-                <p>Details about Order List</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+                <div id="orderListContainer">
+                    <!-- Order list will be displayed here -->
+                </div>
             </section>
+
         </main>
     </div>
 </div>
 <script src="sidebar.js"></script>
+<script src="orders.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

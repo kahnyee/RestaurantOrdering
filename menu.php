@@ -69,6 +69,12 @@
             </div>
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
+            <div class="shopping-cart-container">
+                <a href="orders.php" class="shopping-cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-total-amount">$0</span>
+                </a>
+            </div>
             <section id="seasonals">
                 <h2 style="padding-top: 30px;">Seasonals</h2>
                 <div class="slideshow-container">
@@ -117,13 +123,18 @@
                 <p>Details about the menu items...</p>
                 <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
+            <section id="seasonals_main">
+                <h2 style="padding-top: 30px;">Seasonals</h2>
+                <p>Details about the menu items...</p>
+                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+            </section>
         </main>
     </div>
 </div>
 <!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <!-- Add Firebase products that you want to use -->
-<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 
 <!-- Then load your custom script -->
 <script src="menu.js"></script>
