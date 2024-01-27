@@ -149,7 +149,6 @@
                 // Add a new document in collection "User" with UID as the document ID
                 await setDoc(doc(db, "User", uid), {
                     points: 100,
-                    orderHistory: []
                 });
                 window.location.href = 'redeem.php';
             } catch (error) {
