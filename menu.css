@@ -1,3 +1,4 @@
+/* Global Styles */
 .slideshow-container {
     max-width: 1000px;
     position: relative;
@@ -11,14 +12,14 @@
     position: relative;
 }
 
-/* Image Styling */
+/* Image Styling for Slides */
 .mySlides img {
-    width: 100%; /* Adjust width as needed */
-    max-height: 500px; /* Set a fixed height */
-    object-fit: cover; /* This will ensure the image covers the area without distortion */
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
 }
 
-/* Text below image */
+/* Text below Slide Images */
 .mySlides .text {
     color: #f2f2f2;
     font-size: 15px;
@@ -27,113 +28,83 @@
     bottom: 8px;
     width: 100%;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Optional for better visibility */
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 5px;
 }
 
-/* Grey Dots Container */
+/* Grey Dots for Slideshow */
 .dot-container {
     text-align: center;
-    margin-top: 20px; /* Adjust space above dots */
+    margin-top: 20px;
 }
 
-/* Grey Dots */
 .dot {
     height: 15px;
     width: 15px;
-    margin: 0 2px; /* Increase side margin for easier clicking */
+    margin: 0 2px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
-    cursor: pointer; /* Indicates clickable item */
+    cursor: pointer;
 }
 
 .dot.active {
-    background-color: #b1dfbb; /* Active dot color */
+    background-color: #b1dfbb;
 }
 
 .dot:hover {
-    background-color: #717171; /* Hover state color */
+    background-color: #717171;
 }
 
-/* Fading animation */
+/* Fading animation for Slideshow */
 .fade {
     animation-name: fade;
-    animation-duration: 15s; /* Adjust duration as needed */
+    animation-duration: 15s;
 }
 
 @keyframes fade {
     0% {opacity: 1}
-    85% {opacity: 1} /* Keep the image fully visible for 85% of the time */
+    85% {opacity: 1}
     100% {opacity: 0}
 }
-/* Add this to your menu.css file */
-.appetisers-grid {
+
+/* Menu Item Styles */
+.appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
-.appetiser-item {
-    /* your styles for appetiser item */
-    background-color: #f5f5f5; /* Example background color */
-    padding: 10px; /* Example padding */
-    border-radius: 5px; /* Example border radius */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Example box shadow */
+.appetiser-item, .main-item, .side-item, .dessert-item, .drink-item, .seasonals-main-item {
+    background-color: #3B3B3B;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.appetiser-item img {
+.appetiser-item img, .main-item img, .side-item img, .dessert-item img, .drink-item img, .seasonals-main-item img {
     width: 520px;
     height: 346.5px;
-    border-radius: 5px; /* Example border radius for images */
+    object-fit: cover;
+    border-radius: 5px;
 }
 
-/* Ensure your images fit well within the item containers */
-.appetiser-item .text {
-    margin-top: 8px; /* Spacing between image and text */
-    text-align: center; /* Center the text */
+.appetiser-item .text, .main-item .text, .side-item .text, .dessert-item .text, .drink-item .text, .seasonals-main-item .text {
+    margin-top: 8px;
+    text-align: center;
 }
 
-/* Add this to your menu.css file */
-.appetisers-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-.appetiser-item {
-    /* your styles for appetiser item */
-
-    background-color: #f5f5f5; /* Example background color */
-    padding: 10px; /* Example padding */
-    border-radius: 5px; /* Example border radius */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Example box shadow */
-}
-
-.appetiser-item img {
-    max-width: 100%;
-    height: 346.5px;
-    border-radius: 5px; /* Example border radius for images */
-}
-
-/* Ensure your images fit well within the item containers */
-.appetiser-item .text {
-
-    margin-top: 8px; /* Spacing between image and text */
-    text-align: center; /* Center the text */
-}
+/* Quantity Controls for Items */
 .quantity-controls {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 5px;
-}
-.minus{
-    color: red;
-}
-.plus{
-    color: green;
 }
 
 .quantity-controls .minus, .quantity-controls .plus {
@@ -142,171 +113,68 @@
     padding: 0 10px;
 }
 
+.quantity-controls .minus {
+    color: red;
+}
+
+.quantity-controls .plus {
+    color: green;
+}
+
 .quantity {
     padding: 0 10px;
-
-}
-.main-item {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    position: relative;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center children horizontally */
-    justify-content: center; /* Center children vertically */
 }
 
-.main-item img {
-    width: 520px;
-    height: 346.5px;
-    border-radius: 5px; /* Example border radius for images */
-}
-
-.main-item .text {
-    margin-top: 8px;
-    text-align: center;
-}
-
-.mains-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-.side-item {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.side-item img {
-    width: 520px;
-    height: 346.5px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.side-item .text {
-    margin-top: 8px;
-    text-align: center;
-}
-
-.sides-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-.dessert-item {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.dessert-item img {
-    width: 520px;
-    height: 346.5px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.dessert-item .text {
-    margin-top: 8px;
-    text-align: center;
-}
-
-.desserts-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-.drink-item {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    position: relative;
-    margin-bottom: 10px;
-}
-
-.drink-item img {
-    width: 520px;
-    height: 346.5px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.drink-item .text {
-    margin-top: 8px;
-    text-align: center;
-}
-
-.drinks-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
+/* Shopping Cart Container */
 .shopping-cart-container {
     position: fixed;
     top: 10px;
     right: 10px;
-    z-index: 1000; /* Ensure it's above other elements */
-    background-color: #494949; /* Dark background for visibility */
-    border: 2px solid pink; /* Pink border */
-    padding: 5px 10px; /* Some padding around the content */
-    border-radius: 5px; /* Rounded corners */
+    z-index: 1000;
+    background-color: #494949;
+    border: 1px solid grey;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .shopping-cart-link {
-    color: #fff; /* Adjust color as needed */
+    color: #fff;
     text-decoration: none;
     display: flex;
     align-items: center;
 }
 
-/* Style the cart icon and total amount */
 .shopping-cart-link i,
 .shopping-cart-link span {
     display: inline-block;
-    margin-right: 5px; /* Spacing between icon and amount */
-}
-.seasonals-main-item {
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    position: relative;
-    margin-bottom: 10px;
+    margin-right: 5px;
 }
 
-.seasonals-main-item img {
-    width: 520px;
-    height: 346.5px;
-    object-fit: cover;
-    border-radius: 5px;
+/* Responsive Design */
+@media (max-width: 767px) {
+    .appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Image Styling for Slides */
+    .mySlides img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+    }
+
+    /* Ensure Shopping Cart Icon is visible in Mobile View */
+    .shopping-cart-container {
+        display: block; /* Ensures the container is displayed */
+        position: fixed;
+        top: 60px; /* Adjust position as needed */
+        left: auto; /* Adjust position as needed */
+        z-index: 1000;
+        background-color: #494949;
+        border: 2px solid pink;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
 }
-
-.seasonals-main-item .text {
-    margin-top: 8px;
-    text-align: center;
-}
-
-.seasonals-main-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-}
-
-
-
-
-
-
 

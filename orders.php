@@ -24,11 +24,6 @@
                 <div class="nav-title">Menu</div>
                 <ul class="nav flex-column">
                     <li class="nav-item nav-subitem">
-                        <a href="menu.php#seasonals" class="nav-link">
-                            <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals
-                        </a>
-                    </li>
-                    <li class="nav-item nav-subitem">
                         <a href="menu.php#appetisers" class="nav-link">
                             <i class="fas fa-utensils mr-2"></i> &nbsp;&nbsp;&nbsp;Appetisers
                         </a>
@@ -53,6 +48,11 @@
                             <i class="fas fa-coffee mr-2"></i> &nbsp;&nbsp;&nbsp;Drinks
                         </a>
                     </li>
+                    <li class="nav-item nav-subitem">
+                        <a href="menu.php#seasonals" class="nav-link">
+                            <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals
+                        </a>
+                    </li>
                 </ul>
                 <div class="sidebar-divider"></div>
                 <div class="nav-title">Members</div>
@@ -65,6 +65,7 @@
                     <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
                     <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.html" class="nav-link">Contact Us</a></li>
                 </ul>
+                <div style="margin-bottom: 2000px"></div>
             </div>
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">

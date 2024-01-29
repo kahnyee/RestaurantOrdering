@@ -25,11 +25,6 @@
                 <div class="nav-title">Menu</div>
                 <ul class="nav flex-column">
                     <li class="nav-item nav-subitem">
-                        <a href="#seasonals" class="nav-link">
-                            <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals
-                        </a>
-                    </li>
-                    <li class="nav-item nav-subitem">
                         <a href="#appetisers" class="nav-link">
                             <i class="fas fa-utensils mr-2"></i> &nbsp;&nbsp;&nbsp;Appetisers
                         </a>
@@ -54,18 +49,24 @@
                             <i class="fas fa-coffee mr-2"></i> &nbsp;&nbsp;&nbsp;Drinks
                         </a>
                     </li>
+                    <li class="nav-item nav-subitem">
+                        <a href="#seasonals" class="nav-link">
+                            <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals
+                        </a>
+                    </li>
                 </ul>
                 <div class="sidebar-divider"></div>
                 <div class="nav-title">Members</div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="members.php" class="nav-link">Personals</a></li>
-                    <li class="nav-item"><a href="members.php" class="nav-link">Redeem</a></li>
+                    <li class="nav-item"><a href="auto_validation_personals.html" class="nav-link">Personals</a></li>
+                    <li class="nav-item"><a href="auto_validation_redeem.html" class="nav-link">Redeem</a></li>
                 </ul>
                 <div class="sidebar-divider"></div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="aboutus.php" class="nav-link">About Us</a></li>
-                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.php" class="nav-link">Contact Us</a></li>
+                    <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
+                    <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.html" class="nav-link">Contact Us</a></li>
                 </ul>
+                <div style="margin-bottom: 2000px"></div>
             </div>
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
@@ -75,58 +76,26 @@
                     <span id="cart-total-amount">$0</span>
                 </a>
             </div>
-            <section id="seasonals">
-                <h2 style="padding-top: 30px;">Seasonals</h2>
+            <section id="seasonal">
                 <div class="slideshow-container">
-                    <!-- Slides -->
-                    <div class="mySlides fade">
-                        <img src="assets/Valentine_beef.png" style="width:100%">
-                        <div class="text">Valentine Beef <br>$50</br></div>
-                    </div>
-
-                    <div class="mySlides fade">
-                        <img src="assets/Lobster%20done%20right.jpeg" style="width:100%">
-                        <div class="text">Lobster <br>$89.99</br></div>
-                    </div>
-                    <!-- Grey Dots -->
                     <div class="dot-container">
                         <span class="dot" onclick="currentSlide(1)"></span> <!-- for the first slide -->
                         <span class="dot" onclick="currentSlide(2)"></span>
-                        <!-- ... more dots as needed -->
                     </div>
-
                 </div>
             </section>
 
             <section id="appetisers">
-                <h2 style="padding-top: 30px;">Appetisers</h2>
-                <p>Details about the menu items...</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="mains">
-                <h2 style="padding-top: 30px;">Mains</h2>
-                <p>Details about the menu items...</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="sides">
-                <h2 style="padding-top: 30px;">Sides</h2>
-                <p>Details about the menu items...</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="desserts">
-                <h2 style="padding-top: 30px;">Desserts</h2>
-                <p>Details about the menu items...</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
             <section id="drinks">
-                <h2 style="padding-top: 30px;">Drinks</h2>
-                <p>Details about the menu items...</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
-            <section id="seasonals_main">
-                <h2 style="padding-top: 30px;">Seasonals</h2>
-                <p>Details about the menu items...</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
+            <section id="seasonals">
             </section>
         </main>
     </div>

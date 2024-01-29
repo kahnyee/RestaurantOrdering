@@ -24,11 +24,6 @@
                 <div class="nav-title">Menu</div>
                 <ul class="nav flex-column">
                     <li class="nav-item nav-subitem">
-                        <a href="menu.php#seasonals" class="nav-link">
-                            <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals
-                        </a>
-                    </li>
-                    <li class="nav-item nav-subitem">
                         <a href="menu.php#appetisers" class="nav-link">
                             <i class="fas fa-utensils mr-2"></i> &nbsp;&nbsp;&nbsp;Appetisers
                         </a>
@@ -51,6 +46,11 @@
                     <li class="nav-item nav-subitem">
                         <a href="menu.php#drinks" class="nav-link">
                             <i class="fas fa-coffee mr-2"></i> &nbsp;&nbsp;&nbsp;Drinks
+                        </a>
+                    </li>
+                    <li class="nav-item nav-subitem">
+                        <a href="menu.php#seasonals" class="nav-link">
+                            <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals
                         </a>
                     </li>
                 </ul>
@@ -110,6 +110,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-analytics.js";
     import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.2/firebase-firestore.js";
 
     const firebaseConfig = {
         apiKey: "AIzaSyCGlbYNPvPFE7ByacA1SdeA2mUHqbE_vxg",
@@ -124,6 +125,7 @@
     const app = initializeApp(firebaseConfig);
     const analytics = getAnalytics(app);
     const auth = getAuth(app);
+    const db = getFirestore(app);
 
     async function validatePassword() {
         let email = document.getElementById("email").value;
@@ -141,8 +143,18 @@
                 sessionStorage.setItem('userEmail', email);
                 sessionStorage.setItem('userPassword', password);
                 sessionStorage.setItem('validated', "1");
+                const user = userCredential.user;
+                const uid = user.uid;
+
+                // Add a new document in collection "User" with UID as the document ID
+                await setDoc(doc(db, "User", uid), {
+                    points: 100,
+                });
                 window.location.href = 'redeem.php';
             } catch (error) {
+                document.getElementById("email").value = "";
+                document.getElementById("password").value = "";
+                document.getElementById("confirm-password").value = "";
                 alert("Account already exist");
             }
         } else {
