@@ -8,6 +8,7 @@
     <link href="common.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="menu.css" rel="stylesheet">
 </head>
 <body>
 <button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
@@ -69,15 +70,47 @@
             </div>
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
+            <div class="shopping-cart-container">
+                <a href="orders.html" class="shopping-cart-link" id="shopping-cart-link">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span id="cart-total-amount">$0</span>
+                </a>
+                <script>
+                    document.getElementById('shopping-cart-link').onclick=function (){
+                        sessionStorage.setItem('TheArray', JSON.stringify(currentOrder));
+                        window.location.href='orders.php';
+                    }
+                </script>
+            </div>
             <section id="personal">
-                <h2 style="padding-top: 30px;">Personalised Menu</h2>
-                <p>Details about Personalised Menu</p>
-                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
-            </section>
+                <h1 style="padding-top: 30px;">Personalised Menu</h1>
+                <p>Based on your past orders</p>
+
+                <section id="appetisers">
+                </section>
+                <section id="mains">
+                </section>
+                <section id="sides">
+                </section>
+                <section id="desserts">
+                </section>
+                <section id="drinks">
+                </section>
+                <section id="seasonals">
+                </section>            </section>
         </main>
     </div>
 </div>
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<!-- Add Firebase products that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
 <script src="sidebar.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="personalised.js"></script>
+<script src="orders.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>-->
 </body>
 </html>
