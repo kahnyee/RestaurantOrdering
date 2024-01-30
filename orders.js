@@ -67,6 +67,10 @@ function displayOrderedItemsAndTotal() {
         document.getElementById('totals-container').style.display = 'block';
     }
 }
+function redirectToPaymentPage() {
+    // You can use window.location.href to navigate to the payment page.
+    window.location.href = 'payment.html';
+}
 
 // Initialize display and totals on page load
 displayOrderedItemsAndTotal();
