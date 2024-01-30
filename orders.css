@@ -1,0 +1,131 @@
+.order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #3B3B3B;
+    margin-bottom: 8px;
+}
+
+.order-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.quantity-control button {
+    border: none;
+    background: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.quantity-control span {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 50px;
+}
+
+
+
+.price {
+    font-weight: bold;
+
+    flex-basis: 80px; /* Assign a fixed basis for the price */
+}
+
+/* Make sure the buttons are not too large */
+.btn-outline-secondary {
+    padding: .375rem .75rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: .2rem;
+}
+.food-name {
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.food-name-container {
+    flex: 1; /* Allow it to grow and fill the space */
+    min-width: 0; /* Allows text overflow to work in flex containers */
+}
+.quantity-display {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: center;
+}
+.quantity-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 1300px; /* Assign a fixed basis for the quantity control */
+}
+
+
+.quantity-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.85em;
+    margin: 0 5px;
+}
+.quantity-btn.decrease,.quantity-btn.increase{
+    background: #FFFFFF66;
+}
+.quantity-btn.increase:hover {
+    background: #C1FFC1;
+}
+.quantity-btn.decrease:hover {
+    background: #FFC0CB;
+}
+@media (max-width: 768px) {
+    .food-name-container {
+        max-width: 30%; /* You may need to adjust the percentage for smaller screens */
+    }
+}
+.totals-container {
+    background-color: #3B3B3B;
+    border-radius: 5px;
+    position: relative; /* Set the position to relative so that absolute positioning of children is relative to this container */
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    justify-content: center;
+}
+
+.totals-container div {
+    margin: 5px 0 10px;
+}
+
+#payment-button {
+    padding: 5px 15px;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+}
+.total {
+    margin-bottom: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.subtotal div{
+    margin-top: 20px;
+}
+.subtotal, .discount, .gst, .service, .total{
+    padding-left: 10px;
+}

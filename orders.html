@@ -8,6 +8,8 @@
     <link href="common.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="orders.css" rel="stylesheet">
+
 </head>
 <body>
 <button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
@@ -70,23 +72,40 @@
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <section id="orders">
-                <h2 style="padding-top: 30px;">Order List</h2>
+                <h2 style="padding-top: 30px; margin-bottom: 20px">Order List</h2>
                 <div id="orderListContainer">
-                    <!-- Order list will be displayed here -->
-                    <script>
-                        var sessionString = sessionStorage.getItem('TheArray');
-                        var cartItem = JSON.parse(sessionString);
-                        console.log(cartItem);
-                    </script>
+                    <!-- This structure will be created for each item dynamically using JavaScript -->
+                    <div class="order-item">
+                        <img src="path_to_image" alt="item_name" class="order-image">
+                        <div class="item-details">
+                            <span class="item-name">Item Name</span>
+                            <div class="quantity-control">
+                                <button class="quantity-decrease">-</button>
+                                <input type="number" class="item-quantity" value="1" readonly>
+                                <button class="quantity-increase">+</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
+                <!-- Totals container with the payment button inside -->
+                <div id="totals-container" class="totals-container p-2">
+                    <div id="subtotal" class="subtotal" style="margin-top: 8px">Subtotal: $0.00</div>
+                    <div id="discount" class="discount">Discount: $0.00</div>
+                    <div id="gst" class="gst">GST Inclusive: $0.00</div>
+                    <div id="service" class="service">Service (10%): $0.00</div>
+                    <div id="total" class="total">Total: $0.00</div>
+                    <!-- Payment button with adjusted CSS for positioning -->
+                    <button id="payment-button" class="btn btn-success">Payment</button>
+                </div>
+
             </section>
 
         </main>
     </div>
 </div>
 <script src="sidebar.js"></script>
-<script src="menu_functions.js"></script>
 <script src="orders.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" ></script>
 </body>
 </html>

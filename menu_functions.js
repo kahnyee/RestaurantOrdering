@@ -449,4 +449,5 @@ function updateCartTotal() {
     let totalAmount = currentOrder.reduce((total, item) => total + (item.quantity * item.price), 0);
     document.getElementById('cart-total-amount').textContent = `$${totalAmount.toFixed(2)}`;
 }
+
 updateCartTotal();
