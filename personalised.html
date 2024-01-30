@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Order List</title>
+    <title>Personalised Menu</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="common.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
@@ -24,32 +24,32 @@
                 <div class="nav-title">Menu</div>
                 <ul class="nav flex-column">
                     <li class="nav-item nav-subitem">
-                        <a href="menu.php#appetisers" class="nav-link">
+                        <a href="menu.html#appetisers" class="nav-link">
                             <i class="fas fa-utensils mr-2"></i> &nbsp;&nbsp;&nbsp;Appetisers
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
-                        <a href="menu.php#mains" class="nav-link">
+                        <a href="menu.html#mains" class="nav-link">
                             <i class="fas fa-hamburger mr-2"></i> &nbsp;&nbsp;&nbsp;Mains
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
-                        <a href="menu.php#sides" class="nav-link">
+                        <a href="menu.html#sides" class="nav-link">
                             <i class="fas fa-utensil-spoon mr-2"></i> &nbsp;&nbsp;&nbsp;Sides
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
-                        <a href="menu.php#desserts" class="nav-link">
+                        <a href="menu.html#desserts" class="nav-link">
                             <i class="fas fa-cookie mr-2"></i> &nbsp;&nbsp;&nbsp;Desserts
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
-                        <a href="menu.php#drinks" class="nav-link">
+                        <a href="menu.html#drinks" class="nav-link">
                             <i class="fas fa-coffee mr-2"></i> &nbsp;&nbsp;&nbsp;Drinks
                         </a>
                     </li>
                     <li class="nav-item nav-subitem">
-                        <a href="menu.php#seasonals" class="nav-link">
+                        <a href="menu.html#seasonals" class="nav-link">
                             <i class="fas fa-leaf mr-2"></i> &nbsp;&nbsp;&nbsp;Seasonals
                         </a>
                     </li>
@@ -57,8 +57,8 @@
                 <div class="sidebar-divider"></div>
                 <div class="nav-title">Members</div>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a href="auto_validation_personals.html" class="nav-link">Personals</a></li>
-                    <li class="nav-item"><a href="auto_validation_redeem.html" class="nav-link">Redeem</a></li>
+                    <li class="nav-item"><a href="personalised.html" class="nav-link">Personals</a></li>
+                    <li class="nav-item"><a href="redeem.html" class="nav-link">Redeem</a></li>
                 </ul>
                 <div class="sidebar-divider"></div>
                 <ul class="nav flex-column">
@@ -69,24 +69,15 @@
             </div>
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
-            <section id="orders">
-                <h2 style="padding-top: 30px;">Order List</h2>
-                <div id="orderListContainer">
-                    <!-- Order list will be displayed here -->
-                    <script>
-                        var sessionString = sessionStorage.getItem('TheArray');
-                        var cartItem = JSON.parse(sessionString);
-                        console.log(cartItem);
-                    </script>
-                </div>
+            <section id="personal">
+                <h2 style="padding-top: 30px;">Personalised Menu</h2>
+                <p>Details about Personalised Menu</p>
+                <p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p><p>.</p>
             </section>
-
         </main>
     </div>
 </div>
 <script src="sidebar.js"></script>
-<script src="menu_functions.js"></script>
-<script src="orders.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
