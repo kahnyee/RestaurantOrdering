@@ -9,7 +9,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <link href="orders.css" rel="stylesheet">
-
+    <style>
+        @media (max-width: 768px) {
+            .name {
+                margin-top: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
 <button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
@@ -72,7 +78,7 @@
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <section id="orders">
-                <h2 style="padding-top: 30px; margin-bottom: 20px">Order Success!</h2>
+                <h2 style="padding-top: 30px; margin-bottom: 20px" class="name">Order Success!</h2>
                 <div id="orderListContainer">
                     <!-- This structure will be created for each item dynamically using JavaScript -->
                     <div class="order-item">

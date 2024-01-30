@@ -176,16 +176,24 @@
         border-radius: 5px;
     }
 
+    .appetiser-item img, .main-item img, .side-item img, .dessert-item img, .drink-item img, .seasonals-main-item img {
+        width: 500px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+    .appetiser-item .text, .main-item .text, .side-item .text, .dessert-item .text, .drink-item .text, .seasonals-main-item .text {
+        margin-top: 5px;
+        text-align: center;
+    }
 }
 .shopping-cart-container:hover {
     border: 2px solid #F5D0E9; /* Example hover border color, adjust as needed */
 }
 /* Hover Effect for Menu Items */
 .appetiser-item:hover, .main-item:hover, .side-item:hover, .dessert-item:hover, .drink-item:hover, .seasonals-main-item:hover {
-    transform: scale(1.05); /* Slightly enlarges the item */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Adds a stronger shadow for depth */
-    border: 1px solid #ffffff; /* Changes the border to white */
-    background-color: #6F6F6F; /* Slightly changes the background color */
+    transform: scale(1.01); /* Slightly enlarges the item */
+    box-shadow: 0 5px 25px #6F6F6F; /* Adds a stronger shadow for depth */
 }
 
 .appetiser-item img:hover, .main-item img:hover, .side-item img:hover, .dessert-item img:hover, .drink-item img:hover, .seasonals-main-item img:hover {

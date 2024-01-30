@@ -9,7 +9,7 @@ function updateTotals() {
     total = subtotal - discount + gst + service;
 
     document.getElementById('subtotal').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
-    document.getElementById('discount').textContent = `Discount: - $${discount.toFixed(2)}`;
+    document.getElementById('discount').textContent = `Discount: -$${discount.toFixed(2)}`;
     document.getElementById('gst').textContent = `GST Inclusive: $${gst.toFixed(2)}`;
     document.getElementById('service').textContent = `Service (10%): $${service.toFixed(2)}`;
     document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
