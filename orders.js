@@ -1,13 +1,3 @@
-/*const firebaseConfig = {
-    apiKey: "AIzaSyCGlbYNPvPFE7ByacA1SdeA2mUHqbE_vxg",
-    authDomain: "deliciousfood-c9efa.firebaseapp.com",
-    projectId: "deliciousfood-c9efa",
-    storageBucket: "deliciousfood-c9efa.appspot.com",
-    messagingSenderId: "682668950894",
-    appId: "1:682668950894:web:e1d6e07ade038a3ab32d7f",
-    measurementId: "G-ZG7EGGBSS4"
-};
-firebase.initializeApp(firebaseConfig); */
 function calculateTotalPrice(cartItem){
     let totalPrice = 0;
     cartItem.forEach(item =>{
