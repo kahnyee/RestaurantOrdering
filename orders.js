@@ -1,18 +1,18 @@
 var cartItem = JSON.parse(sessionStorage.getItem('currentOrder')) || [];
+let total = 0;
 
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     let discount = 0; // Default discount value
     let gst = (subtotal - discount) * 0.09; // GST at 9%
     let service = (subtotal - discount) * 0.10; // Service charge at 10%
-    let total = subtotal - discount + gst + service;
+    total = subtotal - discount + gst + service;
 
     document.getElementById('subtotal').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
     document.getElementById('discount').textContent = `Discount: - $${discount.toFixed(2)}`;
     document.getElementById('gst').textContent = `GST Inclusive: $${gst.toFixed(2)}`;
     document.getElementById('service').textContent = `Service (10%): $${service.toFixed(2)}`;
     document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
-
 }
 
 
@@ -68,7 +68,7 @@ function displayOrderedItemsAndTotal() {
     }
 }
 function redirectToPaymentPage() {
-    // You can use window.location.href to navigate to the payment page.
+    sessionStorage.setItem('total', total);
     window.location.href = 'payment.html';
 }
 

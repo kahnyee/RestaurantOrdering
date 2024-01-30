@@ -128,8 +128,11 @@
 
         try {
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
             sessionStorage.setItem('userEmail', email);
             sessionStorage.setItem('userPassword', password);
+            sessionStorage.setItem('userUID', user.uid);
             sessionStorage.setItem('validated', "1");
             window.location.href = 'redeem.html';
         } catch (error) {

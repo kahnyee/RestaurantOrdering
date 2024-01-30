@@ -84,7 +84,7 @@
                                     </div>
                                     <div class="form-group" style="margin-bottom: 10px">
                                         <label for="password">Password</label>
-                                        <input type="password" class="form-control" id="password" name="password" required">
+                                        <input type="password" class="form-control" id="password" name="password" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="confirm-password">Confirm Password</label>
@@ -140,10 +140,13 @@
         if (password === confirmPassword) {
             try {
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
                 sessionStorage.setItem('userEmail', email);
                 sessionStorage.setItem('userPassword', password);
+                sessionStorage.setItem('userUID', user.uid);
                 sessionStorage.setItem('validated', "1");
-                const user = userCredential.user;
+
                 const uid = user.uid;
 
                 // Add a new document in collection "User" with UID as the document ID

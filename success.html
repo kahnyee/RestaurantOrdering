@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Payment</title>
+    <title>Order List</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="common.css" rel="stylesheet" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="orders.css" rel="stylesheet">
+
 </head>
 <body>
 <button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
@@ -69,51 +71,39 @@
             </div>
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
-            <div class="d-flex align-items-center justify-content-center" style="min-height: 90vh;">
-                <div class="container mt-5">
-                    <div class="row">
-                        <div class="col-md-6 offset-md-3">
-                            <h2 class="text-center" style="margin-bottom: 15px">Payment</h2>
-                            <h3 id="order_total" style="margin-bottom: 10px">Total: $10000</h3>
-                            <div id="paypal-button-container"></div>
+            <section id="orders">
+                <h2 style="padding-top: 30px; margin-bottom: 20px">Order Success!</h2>
+                <div id="orderListContainer">
+                    <!-- This structure will be created for each item dynamically using JavaScript -->
+                    <div class="order-item">
+                        <img src="path_to_image" alt="item_name" class="order-image">
+                        <div class="item-details">
+                            <span class="item-name">Item Name</span>
+                            <div class="quantity-control">
+                                <button class="quantity-decrease">-</button>
+                                <input type="number" class="item-quantity" value="1" readonly>
+                                <button class="quantity-increase">+</button>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-            </div>
+                <!-- Totals container with the payment button inside -->
+                <div id="totals-container" class="totals-container p-2">
+                    <div id="subtotal" class="subtotal" style="margin-top: 8px">Subtotal: $0.00</div>
+                    <div id="discount" class="discount">Discount: $0.00</div>
+                    <div id="gst" class="gst">GST Inclusive: $0.00</div>
+                    <div id="service" class="service">Service (10%): $0.00</div>
+                    <div id="total" class="total">Total: $0.00</div>
+                </div>
+
+            </section>
+
         </main>
     </div>
 </div>
 <script src="sidebar.js"></script>
-<script src="https://www.paypal.com/sdk/js?client-id=AaDiPhP3RPp7I1ihZXaaVQEnyoGQPC877e2AAJQkTQfHQtyoXFvVvjbVRVqQeYDn5ijyshDNmsRZVQEY"></script>
-<script>
-    document.getElementById('order_total').innerHTML = "Total: $" + parseFloat(sessionStorage.getItem('total')).toFixed(2);
-
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            // Retrieve the total in USD from sessionStorage
-            const totalInUSD = parseFloat(sessionStorage.getItem('total'));
-
-            // Define the conversion rate from USD to SGD
-            const conversionRate = totalInUSD * 0.7169879; // 1 USD = 0.7169879 SGD
-
-            // Format the total with two decimal places
-            const formattedTotal = conversionRate.toFixed(2);
-
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        currency: 'SGD', // Use SGD as the currency
-                        value: formattedTotal // Pass the converted total in SGD
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            window.location.href = 'success.html';
-        }
-    }).render('#paypal-button-container');
-
-</script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="success.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" ></script>
 </body>
 </html>
