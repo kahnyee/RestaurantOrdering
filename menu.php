@@ -71,10 +71,16 @@
         </nav>
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <div class="shopping-cart-container">
-                <a href="orders.php" class="shopping-cart-link">
+                <a href="orders.php" class="shopping-cart-link" id="shopping-cart-link">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="cart-total-amount">$0</span>
                 </a>
+                <script>
+                    document.getElementById('shopping-cart-link').onclick=function (){
+                        sessionStorage.setItem('TheArray', JSON.stringify(currentOrder));
+                        window.location.href='orders.php';
+                    }
+                </script>
             </div>
             <section id="seasonal">
                 <div class="slideshow-container">
@@ -109,6 +115,7 @@
 <script src="menu.js"></script>
 <script src="sidebar.js"></script>
 <script src="menu_functions.js"></script>
+<script src="orders.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
