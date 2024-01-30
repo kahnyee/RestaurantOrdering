@@ -49,7 +49,7 @@
 }
 
 .dot.active {
-    background-color: #b1dfbb;
+    background-color: #b1dfbb !important;
 }
 
 .dot:hover {
@@ -72,7 +72,7 @@
 .appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 30px;
 }
 
 .appetiser-item, .main-item, .side-item, .dessert-item, .drink-item, .seasonals-main-item {
@@ -88,7 +88,7 @@
 }
 
 .appetiser-item img, .main-item img, .side-item img, .dessert-item img, .drink-item img, .seasonals-main-item img {
-    width: 520px;
+    width: 500px;
     height: 346.5px;
     object-fit: cover;
     border-radius: 5px;
@@ -177,4 +177,19 @@
     }
 
 }
+.shopping-cart-container:hover {
+    border: 2px solid #F5D0E9; /* Example hover border color, adjust as needed */
+}
+/* Hover Effect for Menu Items */
+.appetiser-item:hover, .main-item:hover, .side-item:hover, .dessert-item:hover, .drink-item:hover, .seasonals-main-item:hover {
+    transform: scale(1.05); /* Slightly enlarges the item */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Adds a stronger shadow for depth */
+    border: 1px solid #ffffff; /* Changes the border to white */
+    background-color: #6F6F6F; /* Slightly changes the background color */
+}
+
+.appetiser-item img:hover, .main-item img:hover, .side-item img:hover, .dessert-item img:hover, .drink-item img:hover, .seasonals-main-item img:hover {
+    filter: brightness(1.1); /* Increases the brightness of the image */
+}
+
 
