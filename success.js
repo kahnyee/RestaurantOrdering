@@ -85,7 +85,6 @@ function uploadOrderToFirestore() {
         return newOrderNumber;
     }).then(orderNumber => {
         console.log("Order uploaded successfully. Order Number:", orderNumber);
-        alert("Order uploaded successfully! Order Number: " + orderNumber);
     }).catch(error => {
         console.error("Transaction failed: ", error);
         alert("Error uploading order: " + error.message);

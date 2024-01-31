@@ -29,21 +29,7 @@ async function getPoints() {
     }
 }
 
-// Example usage
-if (!sessionStorage.getItem('sessionInitialized')) {
-    getPoints().then(points => {
-        console.log(points);
-        sessionStorage.setItem('points', points);
-        sessionStorage.setItem('discounts', '0');
-
-        if (points !== null && document.getElementById('point-amount')) {
-            document.getElementById('point-amount').innerHTML = points;
-        }
-
-        // Set a flag to indicate the session has been initialized
-        sessionStorage.setItem('sessionInitialized', 'true');
-    });
-}
+initializeSessionAfterLogin();
 
 document.getElementById('point-amount').innerHTML = sessionStorage.getItem('points');
 
@@ -88,14 +74,18 @@ function updatePointsDisplay(points) {
     }
 }
 function initializeSessionAfterLogin() {
-    const userUID = sessionStorage.getItem('userUID');
-    if (userUID) {
+    if (!sessionStorage.getItem('sessionInitialized')) {
         getPoints().then(points => {
-            sessionStorage.setItem('points', points ?? '0'); // Set to '0' if null
-            updatePointsDisplay(points ?? '0'); // Update points display
+            console.log(points);
+            sessionStorage.setItem('points', points);
             sessionStorage.setItem('discounts', '0');
+
+            if (points !== null && document.getElementById('point-amount')) {
+                document.getElementById('point-amount').innerHTML = points;
+            }
+
+            // Set a flag to indicate the session has been initialized
             sessionStorage.setItem('sessionInitialized', 'true');
         });
     }
 }
-initializeSessionAfterLogin();
