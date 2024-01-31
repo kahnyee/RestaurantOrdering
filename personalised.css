@@ -208,7 +208,7 @@
 
 }
 .shopping-cart-container:hover {
-    border: 2px solid #F5D0E9; /* Example hover border color, adjust as needed */
+    border: 1px solid #F5D0E9; /* Example hover border color, adjust as needed */
 }
 /* Hover Effect for Menu Items */
 .appetiser-item:hover, .main-item:hover, .side-item:hover, .dessert-item:hover, .drink-item:hover, .seasonals-main-item:hover {

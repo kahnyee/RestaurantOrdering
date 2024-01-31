@@ -363,9 +363,6 @@ function getSeasonalsMain() {
 // Call the function to get seasonals_main items
 getSeasonalsMain();
 
-
-
-
 // Call the function to get drinks items
 getDrinks();
 
@@ -375,7 +372,6 @@ getDesserts();
 
 // Call the function to get sides items
 getSides();
-
 
 // Call the function to get mains items
 getMains();

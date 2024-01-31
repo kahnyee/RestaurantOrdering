@@ -3,15 +3,15 @@ let total = 0;
 
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    let discount = 0; // Default discount value
-    let gst = (subtotal - discount) * 0.09; // GST at 9%
-    let service = (subtotal - discount) * 0.10; // Service charge at 10%
+    let discount = parseInt(sessionStorage.getItem('discounts')); // Default discount value
+    let gst = (subtotal) * 0.09; // GST at 9%
+    let service = (subtotal) * 0.10; // Service charge at 10%
     total = subtotal - discount + gst + service;
 
     document.getElementById('subtotal').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
-    document.getElementById('discount').textContent = `Discount: -$${discount.toFixed(2)}`;
-    document.getElementById('gst').textContent = `GST Inclusive: $${gst.toFixed(2)}`;
+    document.getElementById('gst').textContent = `GST (9%): $${gst.toFixed(2)}`;
     document.getElementById('service').textContent = `Service (10%): $${service.toFixed(2)}`;
+    document.getElementById('discount').textContent = `Discount: -$${discount.toFixed(2)}`;
     document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
 }
 
@@ -66,6 +66,7 @@ function displayOrderedItemsAndTotal() {
     } else {
         document.getElementById('totals-container').style.display = 'block';
     }
+
 }
 function redirectToPaymentPage() {
     sessionStorage.setItem('total', total);
@@ -75,6 +76,7 @@ function redirectToPaymentPage() {
 // Initialize display and totals on page load
 displayOrderedItemsAndTotal();
 updateTotals();
+sessionStorage.setItem('total', total);
 
 
 // Save cartItem back to sessionStorage if needed
