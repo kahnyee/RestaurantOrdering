@@ -381,6 +381,7 @@ getAppetisers();
 
 // Call the function to get menu items
 getMenuItems();
+
 function saveOrderToSession() {
     sessionStorage.setItem('currentOrder', JSON.stringify(currentOrder));
 }
@@ -444,6 +445,7 @@ loadOrderFromSession();
 function updateCartTotal() {
     let totalAmount = currentOrder.reduce((total, item) => total + (item.quantity * item.price), 0);
     document.getElementById('cart-total-amount').textContent = `$${totalAmount.toFixed(2)}`;
+    sessionStorage.setItem('total', totalAmount);
 }
 
 updateCartTotal();

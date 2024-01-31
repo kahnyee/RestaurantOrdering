@@ -46,6 +46,43 @@ function displayOrderedItemsAndTotal() {
     }
 }
 
+function uploadOrderToFirestore() {
+    const userUID = sessionStorage.getItem('UserUID');
+    if (!userUID) {
+        console.error("UserUID is not available in session storage.");
+        return;
+    }
+
+    const userRef = db.collection('User').doc(userUID);
+    const previousOrdersRef = userRef.collection('PreviousOrders').doc('PreviousOrders');
+
+    // Run a transaction to retrieve and increment the nextOrderNumber
+    return db.runTransaction(transaction => {
+        return transaction.get(previousOrdersRef).then(doc => {
+            if (!doc.exists) {
+                throw "Document does not exist!";
+            }
+
+            let nextOrderNumber = doc.data().nextOrderNumber || 1;
+
+            // Upload each item in the currentOrder
+            currentOrder.forEach(item => {
+                const orderItemRef = previousOrdersRef.collection(nextOrderNumber.toString()).doc(item.food_name);
+                transaction.set(orderItemRef, item);
+            });
+
+            // Update the nextOrderNumber for the next transaction
+            transaction.update(previousOrdersRef, { nextOrderNumber: nextOrderNumber + 1 });
+
+            return nextOrderNumber; // This value can be used after the transaction completes
+        });
+    }).then(nextOrderNumber => {
+        console.log("Order uploaded successfully with order number:", nextOrderNumber);
+    }).catch(error => {
+        console.error("Transaction failed: ", error);
+    });
+}
+
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     let discount = parseInt(sessionStorage.getItem('discounts')); // Default discount value
@@ -62,6 +99,9 @@ function updateTotals() {
 
 function savePoints() {
     let userPoints = parseInt(sessionStorage.getItem('points'), 10); // Convert to a number
+    let total = parseInt(sessionStorage.getItem('total'), 10);
+    userPoints += calculatePointsBasedOnTotal(total);
+
     // Update points in Firestore
     const userUID = sessionStorage.getItem('userUID');
     db.collection('User').doc(userUID).update({ points: userPoints })
@@ -69,10 +109,25 @@ function savePoints() {
         .catch(error => console.error("Error updating points:", error));
 }
 
+function calculatePointsBasedOnTotal(total) {
+    let points = 0;
+
+    if (total > 500) {
+        points = Math.floor(total) * 2; // 2x points for totals more than $500
+    } else if (total > 200) {
+        points = Math.floor(total) * 1.5; // 1.5x points for totals more than $200
+    } else {
+        points = Math.floor(total); // 1 point for every dollar for totals up to $200
+    }
+
+    return Math.floor(points); // Truncate the points to a whole number
+}
+
 // Initialize display and totals on page load
 displayOrderedItemsAndTotal();
 updateTotals();
 savePoints();
+uploadOrderToFirestore();
 
 // Save cartItem back to sessionStorage if needed
 window.onbeforeunload = function() {
