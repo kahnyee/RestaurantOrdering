@@ -182,7 +182,7 @@
 
 /* Responsive Design */
 @media (max-width: 767px) {
-    .appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid {
+    .appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid, .main-grid, .past-grid {
         grid-template-columns: 1fr;
     }
 
