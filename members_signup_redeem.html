@@ -151,8 +151,16 @@
 
                 // Add a new document in collection "User" with UID as the document ID
                 await setDoc(doc(db, "User", uid), {
-                    points: 100,
+                    points: 200,
                 });
+                // Create "History" collection under User/uid
+                const categories = ['appetisers', 'mains', 'sides', 'desserts', 'drinks'];
+                for (let category of categories) {
+                    await setDoc(doc(db, "User", uid, "History", category), {});
+                }
+
+                // Create "PreviousOrders" collection under User/uid
+                await setDoc(doc(db, "User", uid, "PreviousOrders", "PreviousOrders"), {});
                 window.location.href = 'redeem.html';
             } catch (error) {
                 document.getElementById("email").value = "";
