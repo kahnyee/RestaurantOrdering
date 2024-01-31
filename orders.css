@@ -65,7 +65,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-basis: 1300px; /* Assign a fixed basis for the quantity control */
+    flex-basis: 1300px; /* Keep the basis but make sure it fits in the mobile view */
+}
+@media (max-width: 768px) {
+  .quantity-control{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-basis: 130px; /* Keep the basis but make sure it fits in the mobile view */
+  }
+
 }
 
 
