@@ -48,19 +48,19 @@ if (!sessionStorage.getItem('sessionInitialized')) {
 document.getElementById('point-amount').innerHTML = sessionStorage.getItem('points');
 
 function redeemOffer(discount, point) {
-    let userPoints = sessionStorage.getItem('points');
-    let total = sessionStorage.getItem('total');
+    let userPoints = parseInt(sessionStorage.getItem('points'), 10);
+    let total = parseInt(sessionStorage.getItem('total'), 10);
     if (discount <= total) {
         if (userPoints >= point) {
             let text = "This will deduct your points. Are you?";
             if (confirm(text) == true) {
-                let points = userPoints - point;
-                points = String(points);
-                sessionStorage.setItem('points', points);
+                let newPoints = userPoints - point;
+                sessionStorage.setItem('points', newPoints);
                 let discounts = parseInt(sessionStorage.getItem('discounts')) + discount;
                 sessionStorage.setItem('discounts', discounts);
                 console.log(discounts);
-                updatePointsDisplay(points);
+                updatePointsDisplay(newPoints);
+                updateFirestorePoints(newPoints); // Update points in Firestore
                 window.location.href = "orders.html";
             } else {
                 alert("Redemption canceled!");
@@ -72,10 +72,30 @@ function redeemOffer(discount, point) {
         alert("Total is less than discount!")
     }
 }
-
-function updatePointsDisplay(points) {
-    const pointsElement = document.getElementById('point-amount');
-    if (pointsElement) {
-        pointsElement.innerHTML = points;
+function updateFirestorePoints(newPoints) {
+    const userUID = sessionStorage.getItem('userUID');
+    if (userUID) {
+        db.collection('User').doc(userUID).update({ points: newPoints })
+            .then(() => console.log("Firestore points updated successfully"))
+            .catch(error => console.error("Error updating points in Firestore:", error));
     }
 }
+
+function updatePointsDisplay(points) {
+    const pointsDisplay = document.getElementById('point-amount');
+    if (pointsDisplay) {
+        pointsDisplay.textContent = points ?? '0'; // Display '0' if points are null or undefined
+    }
+}
+function initializeSessionAfterLogin() {
+    const userUID = sessionStorage.getItem('userUID');
+    if (userUID) {
+        getPoints().then(points => {
+            sessionStorage.setItem('points', points ?? '0'); // Set to '0' if null
+            updatePointsDisplay(points ?? '0'); // Update points display
+            sessionStorage.setItem('discounts', '0');
+            sessionStorage.setItem('sessionInitialized', 'true');
+        });
+    }
+}
+initializeSessionAfterLogin();

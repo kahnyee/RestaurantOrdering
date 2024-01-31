@@ -114,9 +114,20 @@ function savePoints() {
     // Update points in Firestore
     const userUID = sessionStorage.getItem('userUID');
     db.collection('User').doc(userUID).update({ points: userPoints })
-        .then(() => console.log("Points updated successfully"))
+        .then(() => {
+            console.log("Points updated successfully");
+            return db.collection('User').doc(userUID).get(); // Fetch the updated points
+        })
+        .then(doc => {
+            if (doc.exists) {
+                const updatedPoints = doc.data().points;
+                sessionStorage.setItem('points', updatedPoints); // Update sessionStorage
+                updatePointsDisplay(updatedPoints); // Update points display on the web page
+            }
+        })
         .catch(error => console.error("Error updating points:", error));
 }
+
 
 function calculatePointsBasedOnTotal(total) {
     let points = 0;
@@ -131,6 +142,14 @@ function calculatePointsBasedOnTotal(total) {
 
     return Math.floor(points); // Truncate the points to a whole number
 }
+function updatePointsDisplay(points) {
+    // Assuming you have an element with id 'points-display' to show the points
+    const pointsDisplay = document.getElementById('points-display');
+    if (pointsDisplay) {
+        pointsDisplay.textContent = `Your Points: ${points}`;
+    }
+}
+
 
 // Initialize display and totals on page load
 displayOrderedItemsAndTotal();
