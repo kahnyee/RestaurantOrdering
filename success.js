@@ -17,34 +17,30 @@ let total = 0;
 
 // Function to clear cart and total from sessionStorage by setting them to blank
 
-function displayOrderedItemsAndTotal() {
-    const orderListContainer = document.getElementById('orderListContainer');
-    orderListContainer.innerHTML = ""; // Clear the container before re-rendering
-
-    cartItem.forEach((item, index) => {
-        const itemContainer = document.createElement('div');
-        itemContainer.className = 'order-item d-flex align-items-center justify-content-between p-2';
-        const imageElement = item.imageURL ? `<img src="${item.imageURL}" alt="${item.food_name}" class="order-image mr-2" style="width:50px; height:50px; object-fit: cover;">` : '';
-        itemContainer.innerHTML = `
-        <div class="food-name-container">
-            <span class="food-name">${imageElement} ${item.food_name}</span>
-        </div>
-        <div class="price">
-            $${(item.price * item.quantity).toFixed(2)}
-        </div>
-    `;
-        orderListContainer.appendChild(itemContainer);
-    });
-
-    // If there are no items, you might want to hide the totals or display a message
-    if (cartItem.length === 0) {
-        document.getElementById('totals-container').style.display = 'none';
-        // Optionally, display a message that the order list is empty
-        orderListContainer.innerHTML = '<p>Your order list is empty.</p>';
-    } else {
-        document.getElementById('totals-container').style.display = 'block';
+function uploadOrderToFirestore() {
+    const userUID = sessionStorage.getItem('UserUID');
+    if (!userUID) {
+        console.error("UserUID is not available in session storage.");
+        return;
     }
+
+    // Get a reference to the user's previous orders collection
+    const previousOrdersRef = db.collection('Users').doc(userUID).collection('PreviousOrders');
+
+    // Create a new order document with a unique identifier (e.g., timestamp)
+    const newOrderRef = previousOrdersRef.doc(new Date().toISOString());
+
+    newOrderRef.set({
+        order: cartItem,
+        orderTotal: total,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp() // Set server-side timestamp
+    }).then(() => {
+        console.log("Order uploaded successfully");
+    }).catch(error => {
+        console.error("Error uploading order:", error);
+    });
 }
+
 
 function uploadOrderToFirestore() {
     const userUID = sessionStorage.getItem('UserUID');

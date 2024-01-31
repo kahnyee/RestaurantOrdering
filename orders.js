@@ -3,7 +3,11 @@ let total = 0;
 
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    let discount = parseInt(sessionStorage.getItem('discounts')); // Default discount value
+
+    // Retrieve discount from sessionStorage, use 0 if not available
+    let discountValue = sessionStorage.getItem('discounts');
+    let discount = discountValue ? parseInt(discountValue) : 0;
+
     let gst = (subtotal) * 0.09; // GST at 9%
     let service = (subtotal) * 0.10; // Service charge at 10%
     total = subtotal - discount + gst + service;
