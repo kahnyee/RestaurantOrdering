@@ -1,0 +1,225 @@
+/* Global Styles */
+.slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+/* Slides */
+.mySlides {
+    display: none;
+    text-align: center;
+    position: relative;
+}
+
+/* Image Styling for Slides */
+.mySlides img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+}
+
+/* Text below Slide Images */
+.mySlides .text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 8px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+
+/* Grey Dots for Slideshow */
+.dot-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #b1dfbb !important;
+}
+
+.dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation for Slideshow */
+.fade {
+    animation-name: fade;
+    animation-duration: 15s;
+}
+
+@keyframes fade {
+    0% {opacity: 1}
+    85% {opacity: 1}
+    100% {opacity: 0}
+}
+
+/* Menu Item Styles */
+.appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid, .main-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.past-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.appetiser-item, .main-item, .side-item, .dessert-item, .drink-item, .seasonals-main-item {
+    background-color: #3B3B3B;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.past-item {
+    background-color: #3B3B3B;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: relative;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.appetiser-item img, .main-item img, .side-item img, .dessert-item img, .drink-item img, .seasonals-main-item img {
+    width: 500px;
+    height: 231px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.past-item img {
+    width: 500px;
+    height: 173.25px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.appetiser-item .text, .main-item .text, .side-item .text, .dessert-item .text, .drink-item .text, .seasonals-main-item .text {
+    margin-top: 8px;
+    text-align: center;
+}
+
+.past-item .text {
+    margin-top: 6px;
+    text-align: center;
+}
+
+/* Quantity Controls for Items */
+.quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.quantity-controls .minus, .quantity-controls .plus {
+    cursor: pointer;
+    user-select: none;
+    padding: 0 10px;
+}
+
+.quantity-controls .minus {
+    color: red;
+}
+
+.quantity-controls .plus {
+    color: green;
+}
+
+.quantity {
+    padding: 0 10px;
+}
+
+/* Shopping Cart Container */
+.shopping-cart-container {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    background-color: #494949;
+    border: 1px solid grey;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.shopping-cart-link {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.shopping-cart-link i,
+.shopping-cart-link span {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+    .appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Image Styling for Slides */
+    .mySlides img {
+        width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+    }
+
+    /* Ensure Shopping Cart Icon is visible in Mobile View */
+    .shopping-cart-container {
+        display: block; /* Ensures the container is displayed */
+        position: fixed;
+        top: 60px; /* Adjust position as needed */
+        left: auto; /* Adjust position as needed */
+        z-index: 1000;
+        background-color: #494949;
+        border: 2px solid pink;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+}
+.shopping-cart-container:hover {
+    border: 2px solid #F5D0E9; /* Example hover border color, adjust as needed */
+}
+/* Hover Effect for Menu Items */
+.appetiser-item:hover, .main-item:hover, .side-item:hover, .dessert-item:hover, .drink-item:hover, .seasonals-main-item:hover {
+    transform: scale(1.05); /* Slightly enlarges the item */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Adds a stronger shadow for depth */
+    border: 1px solid #ffffff; /* Changes the border to white */
+    background-color: #6F6F6F; /* Slightly changes the background color */
+}
+
+.appetiser-item img:hover, .main-item img:hover, .side-item img:hover, .dessert-item img:hover, .drink-item img:hover, .seasonals-main-item img:hover {
+    filter: brightness(1.1); /* Increases the brightness of the image */
+}
+
+
