@@ -32,6 +32,7 @@ async function getPoints() {
 // Example usage
 if (!sessionStorage.getItem('sessionInitialized')) {
     getPoints().then(points => {
+        console.log(points);
         sessionStorage.setItem('points', points);
         sessionStorage.setItem('discounts', '0');
 
@@ -51,13 +52,19 @@ function redeemOffer(discount, point) {
     let total = sessionStorage.getItem('total');
     if (discount <= total) {
         if (userPoints >= point) {
-            let points = userPoints - point;
-            points = String(points);
-            sessionStorage.setItem('points', points);
-            let discounts = parseInt(sessionStorage.getItem('discounts')) + discount;
-            sessionStorage.setItem('discounts', discounts);
-            console.log(discounts);
-            updatePointsDisplay(points);
+            let text = "This will deduct your points. Are you?";
+            if (confirm(text) == true) {
+                let points = userPoints - point;
+                points = String(points);
+                sessionStorage.setItem('points', points);
+                let discounts = parseInt(sessionStorage.getItem('discounts')) + discount;
+                sessionStorage.setItem('discounts', discounts);
+                console.log(discounts);
+                updatePointsDisplay(points);
+                window.location.href = "orders.html";
+            } else {
+                alert("Redemption canceled!");
+            }
         } else {
             alert("Not enough points!")
         }

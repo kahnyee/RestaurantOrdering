@@ -67,7 +67,7 @@
     justify-content: center;
     flex-basis: 1300px; /* Keep the basis but make sure it fits in the mobile view */
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .quantity-control{
       display: flex;
       align-items: center;
@@ -101,7 +101,7 @@
 .quantity-btn.decrease:hover {
     background: #FFC0CB;
 }
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .food-name-container {
         max-width: 30%; /* You may need to adjust the percentage for smaller screens */
     }
