@@ -12,6 +12,13 @@ const firebaseConfig = {
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(app);
 
+// Save cartItem back to sessionStorage if needed
+window.onbeforeunload = function() {
+    sessionStorage.setItem('currentOrder', '');
+    sessionStorage.setItem('total', '');
+    sessionStorage.setItem('sessionInitialized', 'false');
+    sessionStorage.setItem('discounts', '0');
+};
 
 
 var cartItem = JSON.parse(sessionStorage.getItem('currentOrder')) || [];
@@ -161,7 +168,7 @@ async function uploadOrderHistorySequentially() {
 
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    let discount = parseInt(sessionStorage.getItem('discounts')); // Default discount value
+    let discount = parseInt(sessionStorage.getItem('discounts'));
     let gst = (subtotal) * 0.09; // GST at 9%
     let service = (subtotal) * 0.10; // Service charge at 10%
     total = subtotal - discount + gst + service;
@@ -268,11 +275,3 @@ updateTotals();
 savePoints();
 uploadOrderToFirestore();
 uploadOrderHistorySequentially();
-
-// Save cartItem back to sessionStorage if needed
-window.onbeforeunload = function() {
-    sessionStorage.setItem('currentOrder', '');
-    sessionStorage.setItem('total', '');
-    sessionStorage.setItem('sessionInitialized', 'false');
-    sessionStorage.setItem('discounts', '0');
-};

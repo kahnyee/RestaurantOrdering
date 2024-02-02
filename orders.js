@@ -1,4 +1,11 @@
-var cartItem = JSON.parse(sessionStorage.getItem('currentOrder')) || [];
+try {
+    var cartItem = JSON.parse(sessionStorage.getItem('currentOrder')) || [];
+} catch (error) {
+    // Handle the error here, e.g., set cartItem to an empty array
+    console.error('Error parsing JSON:', error);
+    cartItem = [];
+}
+
 let total = 0;
 
 function updateTotals() {
@@ -21,20 +28,29 @@ function updateTotals() {
 
 
 function changeQuantity(index, isAdding) {
+    let itemPrice = cartItem[index].price; // Get the price of the item
+    let discounted = parseInt(sessionStorage.getItem('total'));
+    let counted = total - itemPrice;
+
     if (isAdding) {
         cartItem[index].quantity++;
     } else {
-        if (cartItem[index].quantity > 1) {
-            cartItem[index].quantity--;
+        if (counted >= 0) {
+            if (cartItem[index].quantity > 1) {
+                cartItem[index].quantity--;
+            } else {
+                // Remove the item from the cart if quantity is 1 and we're decreasing it
+                cartItem.splice(index, 1);
+            }
         } else {
-            // Remove the item from the cart if quantity is 1 and we're decreasing it
-            cartItem.splice(index, 1);
+            alert("Total cannot be less than $0!")
         }
     }
     displayOrderedItemsAndTotal();
     updateTotals();
     // Save to sessionStorage immediately after the change
     sessionStorage.setItem('currentOrder', JSON.stringify(cartItem));
+    sessionStorage.setItem('total', String(counted));
 }
 
 
@@ -62,7 +78,6 @@ function displayOrderedItemsAndTotal() {
         orderListContainer.appendChild(itemContainer);
     });
 
-    // If there are no items, you might want to hide the totals or display a message
     if (cartItem.length === 0) {
         document.getElementById('totals-container').style.display = 'none';
         // Optionally, display a message that the order list is empty

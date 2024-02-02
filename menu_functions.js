@@ -36,6 +36,9 @@ function getMenuItems() {
                         <span>$${itemData.discounted_price}</span>
                     </div>
                 `;
+                slideDiv.addEventListener('click', function() {
+                    document.location = "#seasonals";
+                });
                 slideshowContainer.appendChild(slideDiv);
             });
 
@@ -65,7 +68,6 @@ function addDotsAndInitialize(slideshowContainer, totalItems) {
 }
 function getAppetisers() {
     const appetisersContainer = document.getElementById("appetisers");
-    appetisersContainer.innerHTML = '<h2 style="padding-top: 30px;">Appetisers</h2><div class="appetisers-grid"></div>';
     const gridContainer = appetisersContainer.querySelector('.appetisers-grid');
 
     const appetiserCollections = ["appetisers_1", "appetisers_2", "appetisers_3", "appetisers_4", "appetisers_5", "appetisers_6", "appetisers_7", "appetisers_8"];
@@ -115,7 +117,6 @@ function getAppetisers() {
 }
 function getMains() {
     const mainsContainer = document.getElementById("mains");
-    mainsContainer.innerHTML = '<h2 style="padding-top: 30px;">Mains</h2><div class="mains-grid"></div>';
     const gridContainer = mainsContainer.querySelector('.mains-grid');
 
     const mainsCollections = ["mains_1", "mains_2", "mains_3", "mains_4", "mains_5", "mains_6", "mains_7", "mains_8"];
@@ -164,7 +165,6 @@ function getMains() {
 }
 function getSides() {
     const sidesContainer = document.getElementById("sides");
-    sidesContainer.innerHTML = '<h2 style="padding-top: 30px;">Sides</h2><div class="sides-grid"></div>';
     const gridContainer = sidesContainer.querySelector('.sides-grid');
 
     const sidesCollections = ["sides_1", "sides_2", "sides_3", "sides_4", "sides_5", "sides_6", "sides_7", "sides_8"];
@@ -213,7 +213,6 @@ function getSides() {
 }
 function getDesserts() {
     const dessertsContainer = document.getElementById("desserts");
-    dessertsContainer.innerHTML = '<h2 style="padding-top: 30px;">Desserts</h2><div class="desserts-grid"></div>';
     const gridContainer = dessertsContainer.querySelector('.desserts-grid');
 
     const dessertsCollections = ["desserts_1", "desserts_2", "desserts_3", "desserts_4", "desserts_5", "desserts_6", "desserts_7", "desserts_8"];
@@ -261,7 +260,6 @@ function getDesserts() {
 }
 function getDrinks() {
     const drinksContainer = document.getElementById("drinks");
-    drinksContainer.innerHTML = '<h2 style="padding-top: 30px;">Drinks</h2><div class="drinks-grid"></div>';
     const gridContainer = drinksContainer.querySelector('.drinks-grid');
 
     const drinksCollections = ["drinks_1", "drinks_2", "drinks_3", "drinks_4"];
@@ -309,7 +307,6 @@ function getDrinks() {
 }
 function getSeasonalsMain() {
     const seasonalsMainContainer = document.getElementById("seasonals");
-    seasonalsMainContainer.innerHTML = '<h2 style="padding-top: 30px;">Seasonals</h2><div class="seasonals-main-grid"></div>';
     const gridContainer = seasonalsMainContainer.querySelector('.seasonals-main-grid');
 
     const seasonalsMainCollections = ["seasonal_1", "seasonal_2", "seasonal_3", "seasonal_4", "seasonal_5", "seasonal_6", "seasonal_7", "seasonal_8"];
@@ -326,7 +323,11 @@ function getSeasonalsMain() {
                 itemDiv.className = "seasonals-main-item";
                 itemDiv.innerHTML = `
                     <img src="${itemData.imageURL}" style="width:100%">
-                    <div class="text">${itemData.food_name} <br>$${itemData.discounted_price}</br></div>
+                    <div class="text">
+                        ${itemData.food_name} <br>
+                        <span style="text-decoration: line-through;font-style: italic; color: #808080">$${itemData.price}<br></span>
+                        <span>$${itemData.discounted_price}</span>
+                    </div>
                     <div class="quantity-controls">
                         <span class="minus">-</span>
                         <span class="quantity">${itemData.quantity}</span>
