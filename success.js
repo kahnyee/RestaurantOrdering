@@ -18,8 +18,8 @@ window.onbeforeunload = function() {
     sessionStorage.setItem('total', '');
     sessionStorage.setItem('sessionInitialized', 'false');
     sessionStorage.setItem('discounts', '0');
+    window.location.href = 'menu.html';
 };
-
 
 var cartItem = JSON.parse(sessionStorage.getItem('currentOrder')) || [];
 let total = 0;
@@ -36,7 +36,7 @@ function displayOrderedItemsAndTotal() {
         const imageElement = item.imageURL ? `<img src="${item.imageURL}" alt="${item.food_name}" class="order-image mr-2" style="width:50px; height:50px; object-fit: cover;">` : '';
         itemContainer.innerHTML = `
         <div class="food-name-container">
-            <span class="food-name">${imageElement} ${item.food_name}</span>
+            <span class="food-name">${imageElement} ${item.food_name} x${item.quantity} </span>
         </div>
         <div class="price">
             $${(item.price * item.quantity).toFixed(2)}
@@ -161,10 +161,6 @@ async function uploadOrderHistorySequentially() {
         }
     }
 }
-
-
-
-
 
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);

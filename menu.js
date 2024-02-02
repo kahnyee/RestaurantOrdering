@@ -122,6 +122,64 @@ function updateDots() {
     if (dots.length > 0 && slideIndex <= dots.length) {
         dots[slideIndex - 1].className += " active";
     }
-
-
 }
+
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.location.hash === '#appetisers') {
+        var appSection = document.getElementById('appetisers');
+        if (appSection) {
+            setTimeout(function() {
+                appSection.scrollIntoView();
+            }, 1000); // Delay for 1000 milliseconds (1 second)
+        }
+    } else if (window.location.hash === '#mains') {
+        var mainSection = document.getElementById('mains');
+        if (mainSection) {
+            setTimeout(function() {
+                mainSection.scrollIntoView();
+            }, 1000); // Delay for 1000 milliseconds (1 second)
+        }
+    } else if (window.location.hash === '#sides') {
+        var sideSection = document.getElementById('sides');
+        if (sideSection) {
+            setTimeout(function() {
+                sideSection.scrollIntoView();
+            }, 1000); // Delay for 1000 milliseconds (1 second)
+        }
+    } else if (window.location.hash === '#desserts') {
+        var dessertSection = document.getElementById('desserts');
+        if (dessertSection) {
+            setTimeout(function() {
+                dessertSection.scrollIntoView();
+            }, 1000); // Delay for 1000 milliseconds (1 second)
+        }
+    } else if (window.location.hash === '#drinks') {
+        var drinkSection = document.getElementById('drinks');
+        if (drinkSection) {
+            setTimeout(function() {
+                drinkSection.scrollIntoView();
+            }, 1000); // Delay for 1000 milliseconds (1 second)
+        }
+    } else if (window.location.hash === '#seasonals') {
+        var seasonalSection = document.getElementById('seasonals');
+        if (seasonalSection) {
+            setTimeout(function() {
+                seasonalSection.scrollIntoView();
+            }, 1000); // Delay for 1000 milliseconds (1 second)
+        }
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const params = new URLSearchParams(window.location.search);
+    const scrollToSection = params.get('scrollToSection');
+
+    if (scrollToSection) {
+        const sectionElement = document.getElementById(scrollToSection);
+        if (sectionElement) {
+            setTimeout(function() {
+                sectionElement.scrollIntoView({ behavior: 'smooth' });
+            }, 1000); // Delay for 1000 milliseconds (1 second)
+        }
+    }
+});
