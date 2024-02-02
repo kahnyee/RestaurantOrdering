@@ -47,8 +47,38 @@ function displayOrderedItemsAndTotal() {
         document.getElementById('totals-container').style.display = 'block';
     }
 }
+function getCategoryByName(itemName) {
+    // Define mappings of item names to categories
+    const categoryMappings = {
+        // Example mappings, extend this based on your actual items
+        'Canapes': 'appetisers',
+        'Bruschetta':'appetisers',
+        'Cheddar & Bacon':'appetisers',
+        'Clam Dip':'appetisers',
+        'Buratta Salad':'appetisers',
+        'Spicy Tuna Tartare':'appetisers',
+        'Caesar Salad':'appetisers',
+        'Seabass Carparccio':'appetisers',
 
-function uploadOrderToFirestore() {
+
+        'Koffman\'s Fries': 'sides',
+        'Cauliflower Steak': 'mains',
+        'Oreo Pudding': 'desserts',
+        'Red Berry Cheesecake': 'desserts',
+        'Sprite': 'drinks',
+        'Coke': 'drinks',
+        // Add more mappings as necessary
+    };
+
+    // Default category if the item's name does not match any mapping
+    const defaultCategory = 'others';
+
+    // Determine the category based on the item's name, or use the default
+    return categoryMappings[itemName] || defaultCategory;
+}
+
+
+async function uploadOrderHistorySequentially() {
     const userUID = sessionStorage.getItem('userUID');
     if (!userUID) {
         console.error("UserUID is not available in session storage.");
@@ -62,34 +92,38 @@ function uploadOrderToFirestore() {
         return;
     }
 
-    const userRef = db.collection('User').doc(userUID);
-    const previousOrdersRef = userRef.collection('PreviousOrders').doc('PreviousOrders');
+    const historyRef = db.collection('User').doc(userUID).collection('History');
 
-    return db.runTransaction(async transaction => {
-        const doc = await transaction.get(previousOrdersRef);
-        let newOrderNumber = 1;
+    for (const item of cartItem) {
+        try {
+            const category = getCategoryByName(item.food_name);
+            const categoryRef = historyRef.doc(category).collection(category);
 
-        if (doc.exists) {
-            newOrderNumber = doc.data().lastOrderNumber ? doc.data().lastOrderNumber + 1 : 1;
+            // Fetch the current items to determine the next index
+            const snapshot = await categoryRef.get();
+            const itemCount = snapshot.docs.length;
+            const nextIndex = itemCount + 1;
+            const itemNameFormatted = `${category}_${nextIndex}`;
+
+            const itemRef = categoryRef.doc(itemNameFormatted);
+
+            await itemRef.set({
+                food_name: item.food_name,
+                imageURL: item.imageURL,
+                price: item.price,
+                count: item.quantity || 1
+            });
+
+            console.log(`Successfully added/updated ${itemNameFormatted} in history.`);
+        } catch (error) {
+            console.error(`Error adding/updating item in history: ${item.food_name}`, error);
         }
-
-        const newOrderRef = previousOrdersRef.collection(String(newOrderNumber)); // Use just the number as the collection name
-        cartItem.forEach(item => {
-            const newItemRef = newOrderRef.doc();
-            transaction.set(newItemRef, item);
-        });
-
-        // Update the lastOrderNumber in the PreviousOrders document
-        transaction.set(previousOrdersRef, { lastOrderNumber: newOrderNumber }, { merge: true });
-
-        return newOrderNumber;
-    }).then(orderNumber => {
-        console.log("Order uploaded successfully. Order Number:", orderNumber);
-    }).catch(error => {
-        console.error("Transaction failed: ", error);
-        alert("Error uploading order: " + error.message);
-    });
+    }
 }
+
+
+
+
 
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);
@@ -149,12 +183,57 @@ function updatePointsDisplay(points) {
     }
 }
 
+function uploadOrderToFirestore() {
+    const userUID = sessionStorage.getItem('userUID');
+    if (!userUID) {
+        console.error("UserUID is not available in session storage.");
+        alert("Error: User not identified.");
+        return;
+    }
+
+    if (cartItem.length === 0) {
+        console.error("Cart is empty.");
+        alert("Error: No items in the cart to upload.");
+        return;
+    }
+
+    const userRef = db.collection('User').doc(userUID);
+    const previousOrdersRef = userRef.collection('PreviousOrders').doc('PreviousOrders');
+
+    return db.runTransaction(async transaction => {
+        const doc = await transaction.get(previousOrdersRef);
+        let newOrderNumber = 1;
+
+        if (doc.exists) {
+            newOrderNumber = doc.data().lastOrderNumber ? doc.data().lastOrderNumber + 1 : 1;
+        }
+
+        const newOrderRef = previousOrdersRef.collection(String(newOrderNumber)); // Use just the number as the collection name
+        cartItem.forEach(item => {
+            const newItemRef = newOrderRef.doc();
+            transaction.set(newItemRef, item);
+        });
+
+        // Update the lastOrderNumber in the PreviousOrders document
+        transaction.set(previousOrdersRef, { lastOrderNumber: newOrderNumber }, { merge: true });
+
+        return newOrderNumber;
+    }).then(orderNumber => {
+        console.log("Order uploaded successfully. Order Number:", orderNumber);
+    }).catch(error => {
+        console.error("Transaction failed: ", error);
+        alert("Error uploading order: " + error.message);
+    });
+}
+
+
 
 // Initialize display and totals on page load
 displayOrderedItemsAndTotal();
 updateTotals();
 savePoints();
 uploadOrderToFirestore();
+uploadOrderHistorySequentially();
 
 // Save cartItem back to sessionStorage if needed
 window.onbeforeunload = function() {
