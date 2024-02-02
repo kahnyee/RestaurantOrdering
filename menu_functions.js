@@ -17,7 +17,6 @@ function getMenuItems() {
     seasonalsContainer.innerHTML = '<p style="height: 20px"></p><div class="slideshow-container"></div>';
     const slideshowContainer = seasonalsContainer.querySelector('.slideshow-container');
 
-    // Define the collections to query
     const collections = ["seasonal_1", "seasonal_2", "seasonal_3","seasonal_4","seasonal_5","seasonal_6","seasonal_7","seasonal_8"];
     let totalItems = 0;
 
@@ -31,13 +30,12 @@ function getMenuItems() {
                 slideDiv.className = "mySlides fade";
                 slideDiv.innerHTML = `
                     <img src="${itemData.imageURL}" style="width:100%">
-                    <div class="text">${itemData.food_name} <br>$${itemData.price}</br></div>
+                    <div class="text">
+                        ${itemData.food_name} <br>
+                        <span style="text-decoration: line-through;font-style: italic; color: #808080">$${itemData.price}<br></span>
+                        <span>$${itemData.discounted_price}</span>
+                    </div>
                 `;
-                // Navigate to the seasonals_main anchor when a slide is clicked
-                slideDiv.addEventListener('click', function() {
-                    document.location = "#seasonals"; // Scrolls to the "seasonals_main" section
-                });
-
                 slideshowContainer.appendChild(slideDiv);
             });
 
