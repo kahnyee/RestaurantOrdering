@@ -32,6 +32,8 @@ function getMenuItems(menuType) {
     itemsRef.orderBy("count", "desc").limit(1).get().then((snapshot) => {
         snapshot.forEach((doc) => {
             const itemData = doc.data();
+
+            // Check if the item is already in the order and set its quantity
             let orderItem = currentOrder.find(order => order.food_name === itemData.food_name);
             itemData.quantity = orderItem ? orderItem.quantity : 0;
 
@@ -47,27 +49,26 @@ function getMenuItems(menuType) {
                 </div>
             `;
 
-            addQuantityControlsEventListeners(itemDiv, itemData);
+// Plus icon click event
+            itemDiv.querySelector('.plus').addEventListener('click', function() {
+                itemData.quantity++; // Increase by 1
+                itemDiv.querySelector('.quantity').textContent = itemData.quantity;
+                addToOrder(itemData);
+            });
+
+// Minus icon click event
+            itemDiv.querySelector('.minus').addEventListener('click', function() {
+                if (itemData.quantity > 0) {
+                    itemData.quantity--; // Decrease by 1
+                    itemDiv.querySelector('.quantity').textContent = itemData.quantity;
+                    removeFromOrder(itemData);
+                }
+            });
 
             gridContainer.appendChild(itemDiv);
         });
     }).catch((error) => {
-        console.error(`Error getting items from ${menuType}:`, error);
-    });
-}
-
-function addQuantityControlsEventListeners(itemDiv, itemData) {
-    itemDiv.querySelector('.plus').addEventListener('click', function() {
-        itemData.quantity++;
-        itemDiv.querySelector('.quantity').textContent = itemData.quantity;
-        addToOrder(itemData);
-    });
-    itemDiv.querySelector('.minus').addEventListener('click', function() {
-        if (itemData.quantity > 0) {
-            itemData.quantity--;
-            itemDiv.querySelector('.quantity').textContent = itemData.quantity;
-            removeFromOrder(itemData);
-        }
+        console.error(`Error getting items from ${collectionName}:`, error);
     });
 }
 
@@ -134,7 +135,6 @@ function addOrderToCart(orderItems) {
     updateCartTotal();
     saveOrderToSession();
     window.location.href = 'orders.html';
-
 }
 
 
