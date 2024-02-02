@@ -326,7 +326,7 @@ function getSeasonalsMain() {
                 itemDiv.className = "seasonals-main-item";
                 itemDiv.innerHTML = `
                     <img src="${itemData.imageURL}" style="width:100%">
-                    <div class="text">${itemData.food_name} <br>$${itemData.price}</br></div>
+                    <div class="text">${itemData.food_name} <br>$${itemData.discounted_price}</br></div>
                     <div class="quantity-controls">
                         <span class="minus">-</span>
                         <span class="quantity">${itemData.quantity}</span>
