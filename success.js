@@ -161,4 +161,5 @@ window.onbeforeunload = function() {
     sessionStorage.setItem('currentOrder', '');
     sessionStorage.setItem('total', '');
     sessionStorage.setItem('sessionInitialized', 'false');
+    sessionStorage.setItem('discounts', '0');
 };
