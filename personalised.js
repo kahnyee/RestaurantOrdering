@@ -19,12 +19,12 @@ function getMenuItems(menuType) {
     const gridContainer = container.querySelector('.main-grid');
 
     const collections = {
-        "appetisers": "appetisers_1",
-        "mains": "mains_1",
-        "sides": "sides_1",
-        "desserts": "desserts_1",
-        "drinks": "drinks_1",
-        "seasonals": "seasonal_1"
+        "appetisers": "appetisers",
+        "mains": "mains",
+        "sides": "sides",
+        "desserts": "desserts",
+        "drinks": "drinks",
+        "seasonals": "seasonal"
     };
 
     const itemsRef = db.collection("User").doc(userId).collection("History").doc(menuType).collection(collections[menuType]);
