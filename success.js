@@ -60,13 +60,47 @@ function getCategoryByName(itemName) {
         'Caesar Salad':'appetisers',
         'Seabass Carparccio':'appetisers',
 
+        'Oreo Pudding':'desserts',
+        'Berry Cheesecake':'desserts',
+        'Red Velvet':'desserts',
+        'Tiramisu':'desserts',
+        'Crème Brûlée':'desserts',
+        'PannaCotta':'desserts',
+        'Mochi':'desserts',
+        'Apple Pie':'desserts',
 
-        'Koffman\'s Fries': 'sides',
-        'Cauliflower Steak': 'mains',
-        'Oreo Pudding': 'desserts',
-        'Red Berry Cheesecake': 'desserts',
-        'Sprite': 'drinks',
-        'Coke': 'drinks',
+        'Sprite':'drinks',
+        'Coke':'drinks',
+        'Sparkling Water':'drinks',
+        'Iced Lemon Tea':'drinks',
+
+        'Cauliflower Steak':'mains',
+        'Fish & Chips':'mains',
+        'Aristocrat Burger':'mains',
+        'Iberico Pork Chop':'mains',
+        'Tonkotsu Ramen':'mains',
+        'Beef Bolognese ':'mains',
+        'Lobster Tagliatelelle':'mains',
+        'Classic King Crab':'mains',
+
+        'Valentine Beef':'seasonals',
+        'Neapolitan Pizza':'seasonals',
+        'Grilled Lamb':'seasonals',
+        'Bacon Wrapped':'seasonals',
+        'Lobster Bisque':'seasonals',
+        'Olive Tapenade':'seasonals',
+        'Paella':'seasonals',
+        'Spinach Pie':'seasonals',
+
+        'Koffman\'s Fries':'sides',
+        'Macaroni & Cheese':'sides',
+        'Brie Mashed Potato':'sides',
+        'Glazed Meatballs':'sides',
+        'Chicken Gyoza':'sides',
+        'Crusted Calamari':'sides',
+        'Green Beans':'sides',
+        'Nachos':'sides',
+
         // Add more mappings as necessary
     };
 
