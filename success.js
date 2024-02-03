@@ -136,31 +136,42 @@ async function uploadOrderHistorySequentially() {
     const historyRef = db.collection('User').doc(userUID).collection('History');
 
     for (const item of cartItem) {
-        try {
-            const category = getCategoryByName(item.food_name);
-            const categoryRef = historyRef.doc(category).collection(category);
+        const category = getCategoryByName(item.food_name);
+        const categoryDocRef = historyRef.doc(category);
+        const itemsCollectionRef = categoryDocRef.collection(category);
 
-            // Fetch the current items to determine the next index
-            const snapshot = await categoryRef.get();
-            const itemCount = snapshot.docs.length;
-            const nextIndex = itemCount + 1;
-            const itemNameFormatted = `${category}_${nextIndex}`;
+        // Query to find existing item document by food_name within the category sub-collection
+        const existingItemQuery = await itemsCollectionRef.where('food_name', '==', item.food_name).get();
 
-            const itemRef = categoryRef.doc(itemNameFormatted);
-
-            await itemRef.set({
+        if (!existingItemQuery.empty) {
+            // Item exists, update its count
+            const existingItemDoc = existingItemQuery.docs[0];
+            const existingItemCount = existingItemDoc.data().count;
+            const newItemCount = existingItemCount + item.quantity;
+            await existingItemDoc.ref.update({ count: newItemCount });
+            console.log(`Successfully updated count for ${item.food_name} in ${category}.`);
+        } else {
+            // Item does not exist, find the next index for the new item
+            const categorySnapshot = await itemsCollectionRef.orderBy('index', 'desc').limit(1).get();
+            let newIndex = 1; // Default to 1 if no items exist in the category sub-collection
+            if (!categorySnapshot.empty) {
+                newIndex = categorySnapshot.docs[0].data().index + 1;
+            }
+            const newItemDocId = `${category}_${newIndex}`;
+            await itemsCollectionRef.doc(newItemDocId).set({
                 food_name: item.food_name,
                 imageURL: item.imageURL,
                 price: item.price,
-                count: item.quantity || 1
+                count: item.quantity || 1,
+                index: newIndex
             });
-
-            console.log(`Successfully added/updated ${itemNameFormatted} in history.`);
-        } catch (error) {
-            console.error(`Error adding/updating item in history: ${item.food_name}`, error);
+            console.log(`Successfully added ${newItemDocId} to ${category}.`);
         }
     }
 }
+
+
+
 
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);
