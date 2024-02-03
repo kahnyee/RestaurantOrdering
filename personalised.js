@@ -141,20 +141,23 @@ function addOrderToCart(orderItems) {
 
 // Functions to manage the order
 function addToOrder(item) {
-    let orderItem = currentOrder.find(order => order.food_name === item.food_name);
+    console.log("Before addToOrder:", currentOrder);
 
+    let orderItem = currentOrder.find(order => order.food_name === item.food_name);
     if (orderItem) {
-        orderItem.quantity += item.quantity;
+        orderItem.quantity += 1; // Increase only by 1, regardless of item.quantity
     } else {
         currentOrder.push({
             ...item,
-            quantity: item.quantity
+            quantity: 1 // Start with 1, not item.quantity
         });
     }
+
+    console.log("After addToOrder:", currentOrder);
+
     updateCartTotal();
     saveOrderToSession();
 }
-
 
 function removeFromOrder(item) {
     const orderItem = currentOrder.find(order => order.food_name === item.food_name);
