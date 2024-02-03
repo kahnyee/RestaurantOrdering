@@ -1,0 +1,85 @@
+body {
+    background: url("assets/start_image_wide.png") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.text-container {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    margin-bottom: 15vh;
+    margin-top: 8vh;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    color: whitesmoke;
+}
+
+h6.restaurant-name {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0; /* Add some padding for spacing */
+    background-color: rgba(0, 0, 0, 0.6); /* Optional: adds background */
+    color: whitesmoke; /* Adjust color as needed */
+}
+
+.btn-custom {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid whitesmoke;
+    padding: 15px 30px;
+    font-size: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-custom:hover {
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 5px 30px grey; /* Adds a stronger shadow for depth */
+    color: white;
+    border: 2px solid whitesmoke;
+}
+
+@media (max-width: 767px) {
+    body {
+        background: url("assets/start_image.png") no-repeat center center fixed;
+        background-size: cover;
+    }
+
+    .text-container {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        border-radius: 10px;
+        padding: 18px;
+        text-align: center;
+        margin: 26vh 10px 1vh;
+    }
+
+    h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 35px;
+        color: whitesmoke;
+    }
+
+    .btn-custom {
+        background-color: rgba(0, 0, 0, 0.6);
+        color: white;
+        border: 1px solid whitesmoke;
+        padding: 13px 30px;
+        font-size: 20px;
+        border-radius: 8px;
+        transition: all 0.3s ease-in-out;
+    }
+}

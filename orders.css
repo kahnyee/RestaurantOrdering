@@ -1,3 +1,6 @@
+/* CSS for the order items in a shopping cart */
+
+/* Styles for each order item */
 .order-item {
     display: flex;
     justify-content: space-between;
@@ -8,6 +11,7 @@
     margin-bottom: 8px;
 }
 
+/* Styles for the food image in an order item */
 .order-image {
     width: 50px;
     height: 50px;
@@ -15,6 +19,8 @@
     object-fit: cover;
     margin-right: 10px;
 }
+
+/* Styles for the quantity control buttons */
 .quantity-control button {
     border: none;
     background: white;
@@ -23,6 +29,7 @@
     margin: 0 5px;
 }
 
+/* Styles for the quantity display span */
 .quantity-control span {
     padding: 5px 10px;
     border: 1px solid #ddd;
@@ -30,56 +37,60 @@
     width: 50px;
 }
 
-
-
+/* Styles for the price */
 .price {
     font-weight: bold;
-
     flex-basis: 80px; /* Assign a fixed basis for the price */
 }
 
-/* Make sure the buttons are not too large */
+/* Styles for buttons */
 .btn-outline-secondary {
     padding: .375rem .75rem;
     font-size: .875rem;
     line-height: 1.5;
     border-radius: .2rem;
 }
+
+/* Styles for food names */
 .food-name {
     font-size: 1em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+/* Styles for the food name container */
 .food-name-container {
     flex: 1; /* Allow it to grow and fill the space */
     min-width: 0; /* Allows text overflow to work in flex containers */
 }
+
+/* Styles for the quantity display */
 .quantity-display {
     padding: 5px 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
     text-align: center;
 }
+
+/* Styles for the quantity control */
 .quantity-control {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-basis: 1300px; /* Keep the basis but make sure it fits in the mobile view */
 }
+
+/* Media query for screens with a max width of 767px */
 @media (max-width: 767px) {
-  .quantity-control{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-basis: 1px; /* Keep the basis but make sure it fits in the mobile view */
-  }
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-basis: 1px; /* Keep the basis but make sure it fits in the mobile view */
+    }
 
-
-}
-@media (max-width: 767px) {
-
-
+    /* Adjust styles for smaller screens */
     .food-name-container {
         width: 100%; /* Full width */
     }
@@ -95,7 +106,6 @@
         margin-top: 0px;
     }
 
-    /* Adjust the font sizes for smaller screens */
     .food-name {
         font-size: 0.8em; /* Smaller font size */
         text-align: center;
@@ -108,7 +118,6 @@
 
     /* Adjust button sizes for easier touch targets on mobile */
     .quantity-btn.decrease, .quantity-btn.increase {
-
         width: 20px;
         height: 20px;
     }
@@ -117,10 +126,16 @@
     .food-name-container .text-overflow-ellipsis {
         display: none; /* Hide on small screens if necessary */
     }
+
+    .food-name-container {
+        max-width: 30%; /* You may need to adjust the percentage for smaller screens */
+    }
+    .name {
+        margin-top: 10px;
+    }
 }
 
-
-
+/* Styles for quantity control buttons */
 .quantity-btn {
     background-color: #fff;
     border: 1px solid #ccc;
@@ -135,20 +150,23 @@
     font-size: 0.85em;
     margin: 0 5px;
 }
-.quantity-btn.decrease,.quantity-btn.increase{
+
+/* Styles for quantity increase and decrease buttons */
+.quantity-btn.decrease, .quantity-btn.increase {
     background: #FFFFFF66;
 }
+
+/* Hover styles for quantity increase button */
 .quantity-btn.increase:hover {
     background: #C1FFC1;
 }
+
+/* Hover styles for quantity decrease button */
 .quantity-btn.decrease:hover {
     background: #FFC0CB;
 }
-@media (max-width: 767px) {
-    .food-name-container {
-        max-width: 30%; /* You may need to adjust the percentage for smaller screens */
-    }
-}
+
+/* Styles for the totals container */
 .totals-container {
     background-color: #3B3B3B;
     border-radius: 5px;
@@ -160,24 +178,32 @@
     justify-content: center;
 }
 
+/* Styles for elements inside the totals container */
 .totals-container div {
     margin: 5px 0 10px;
 }
 
+/* Styles for the payment button */
 #payment-button {
     padding: 5px 15px;
     position: absolute;
     right: 15px;
     bottom: 15px;
 }
+
+/* Styles for the total */
 .total {
     margin-bottom: 50px;
     font-size: 1.3rem;
     font-weight: bold;
 }
-.subtotal div{
+
+/* Styles for subtotal and related elements */
+.subtotal div {
     margin-top: 20px;
 }
-.subtotal, .discount, .gst, .service, .total{
+
+/* Styles for subtotal, discount, GST, service charge, and total elements */
+.subtotal, .discount, .gst, .service, .total {
     padding-left: 10px;
 }

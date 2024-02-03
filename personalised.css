@@ -207,9 +207,11 @@
     }
 
 }
+
 .shopping-cart-container:hover {
     border: 1px solid #F5D0E9; /* Example hover border color, adjust as needed */
 }
+
 /* Hover Effect for Menu Items */
 .appetiser-item:hover, .main-item:hover, .side-item:hover, .dessert-item:hover, .drink-item:hover, .seasonals-main-item:hover {
     transform: scale(1.05); /* Slightly enlarges the item */
@@ -221,5 +223,3 @@
 .appetiser-item img:hover, .main-item img:hover, .side-item img:hover, .dessert-item img:hover, .drink-item img:hover, .seasonals-main-item img:hover {
     filter: brightness(1.1); /* Increases the brightness of the image */
 }
-
-

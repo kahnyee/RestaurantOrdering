@@ -1,4 +1,6 @@
 /* Global Styles */
+
+/* Slideshow Container */
 .slideshow-container {
     max-width: 1000px;
     position: relative;
@@ -75,6 +77,7 @@
     gap: 30px;
 }
 
+/* Common Item Styling */
 .appetiser-item, .main-item, .side-item, .dessert-item, .drink-item, .seasonals-main-item {
     background-color: #3B3B3B;
     padding: 10px;
@@ -87,6 +90,7 @@
     align-items: center;
 }
 
+/* Image Styling for Menu Items */
 .appetiser-item img, .main-item img, .side-item img, .dessert-item img, .drink-item img, .seasonals-main-item img {
     width: 500px;
     height: 346.5px;
@@ -94,6 +98,7 @@
     border-radius: 5px;
 }
 
+/* Text Styling for Menu Items */
 .appetiser-item .text, .main-item .text, .side-item .text, .dessert-item .text, .drink-item .text, .seasonals-main-item .text {
     margin-top: 8px;
     text-align: center;
@@ -152,52 +157,48 @@
 
 /* Responsive Design */
 @media (max-width: 767px) {
+    /* Adjustments for smaller screens */
+
+    /* Menu Grids to Single Column */
     .appetisers-grid, .mains-grid, .sides-grid, .desserts-grid, .drinks-grid, .seasonals-main-grid {
         grid-template-columns: 1fr;
     }
 
-    /* Image Styling for Slides */
-    .mySlides img {
-        width: 100%;
-        max-height: 250px;
-        object-fit: cover;
-    }
-
-    /* Ensure Shopping Cart Icon is visible in Mobile View */
-    .shopping-cart-container {
-        display: block; /* Ensures the container is displayed */
-        position: fixed;
-        top: 60px; /* Adjust position as needed */
-        left: auto; /* Adjust position as needed */
-        z-index: 1000;
-        background-color: #494949;
-        border: 1px solid grey;
-        padding: 5px 10px;
-        border-radius: 5px;
-    }
-
+    /* Adjust image size for smaller screens */
     .appetiser-item img, .main-item img, .side-item img, .dessert-item img, .drink-item img, .seasonals-main-item img {
         width: 500px;
         height: 200px;
         object-fit: cover;
         border-radius: 5px;
     }
+
+    /* Adjust text styling for smaller screens */
     .appetiser-item .text, .main-item .text, .side-item .text, .dessert-item .text, .drink-item .text, .seasonals-main-item .text {
         margin-top: 5px;
         text-align: center;
     }
+
+    /* Ensure Shopping Cart Icon is visible in Mobile View */
+    .shopping-cart-container {
+        display: block;
+        position: fixed;
+        top: 60px;
+        left: auto;
+        z-index: 1000;
+        background-color: #494949;
+        border: 1px solid grey;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
 }
-.shopping-cart-container:hover {
-    border: 1px solid #F5D0E9; /* Example hover border color, adjust as needed */
-}
+
 /* Hover Effect for Menu Items */
 .appetiser-item:hover, .main-item:hover, .side-item:hover, .dessert-item:hover, .drink-item:hover, .seasonals-main-item:hover {
-    transform: scale(1.01); /* Slightly enlarges the item */
-    box-shadow: 0 5px 25px #6F6F6F; /* Adds a stronger shadow for depth */
+    transform: scale(1.01);
+    box-shadow: 0 5px 25px #6F6F6F;
 }
 
+/* Hover Effect for Menu Item Images */
 .appetiser-item img:hover, .main-item img:hover, .side-item img:hover, .dessert-item img:hover, .drink-item img:hover, .seasonals-main-item img:hover {
-    filter: brightness(1.1); /* Increases the brightness of the image */
+    filter: brightness(1.1);
 }
-
-

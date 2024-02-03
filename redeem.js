@@ -58,6 +58,7 @@ function redeemOffer(discount, point) {
         alert("Total is less than discount!")
     }
 }
+
 function updateFirestorePoints(newPoints) {
     const userUID = sessionStorage.getItem('userUID');
     if (userUID) {
@@ -73,6 +74,7 @@ function updatePointsDisplay(points) {
         pointsDisplay.textContent = points ?? '0'; // Display '0' if points are null or undefined
     }
 }
+
 function initializeSessionAfterLogin() {
     if (!sessionStorage.getItem('sessionInitialized')) {
         getPoints().then(points => {

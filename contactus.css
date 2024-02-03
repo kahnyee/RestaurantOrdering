@@ -1,29 +1,42 @@
+/* Media query for screens with a maximum width of 767px */
 @media (max-width: 767px) {
+    /* Adjusting styles for elements with class 'logo' */
     .logo {
         width: 200px;
         height: auto;
-        padding-top:  -40px;
+        padding-top: -40px;
     }
 
+    /* Adjusting styles for elements within '.contact-detail' */
     .contact-detail img {
         width: 100%;
         max-width: 325px;
         height: auto;
     }
+
+    /* Adjusting padding for elements with class 'contact' */
     .contact {
         padding-top: 50px;
     }
 }
+
+/* Styles for '.contact-detail img' outside the media query */
 .contact-detail img {
     width: 360px;
     height: auto;
 }
+
+/* Styles for '.locations-header' */
 .locations-header {
     margin-top: -12px;
 }
+
+/* Styles for '.contact' */
 .contact {
     margin-top: -15px;
 }
+
+/* Styles for '.logo' outside the media query */
 .logo {
     margin: 20px;
 }

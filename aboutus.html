@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>About Us</title>
+    <!-- Link to Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="common.css" rel="stylesheet" type="text/css">
+    <!-- Link to Font Awesome icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Link to Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <style>
-        @media (max-width: 768px) {
-            .name {
-                margin-top: 20px;
-            }
-        }
-    </style>
+    <!-- Link to common CSS file -->
+    <link href="common.css" rel="stylesheet" type="text/css">
+    <!-- Link to specific CSS for this page -->
+    <link href="aboutus.css" rel="stylesheet" type="text/css">
 </head>
+
 <body>
 <button class="btn btn-primary d-md-none" type="button" onclick="toggleSidebar()">
     <i class="fas fa-bars"></i>
 </button>
+
 <div class="mobile-bg" id="mobileBg"></div>
 <div class="container-fluid">
     <div class="row">
+
+        <!-- Sidebar -->
         <nav class="col-md-3 col-lg-2 d-md-block sidebar scrollable-section shift-down" id="sidebar">
             <div class="sidebar-sticky">
                 <h2 style="padding-top: 13px">Table No:</h2>
                 <h1>01</h1>
+
                 <div class="sidebar-divider"></div>
                 <div class="nav-title">Menu</div>
                 <ul class="nav flex-column">
+                    <!-- Sidebar links to different sections -->
                     <li class="nav-item nav-subitem">
                         <a href="menu.html#appetisers" class="nav-link">
                             <i class="fas fa-utensils mr-2"></i> &nbsp;&nbsp;&nbsp;Appetisers
@@ -61,40 +67,47 @@
                         </a>
                     </li>
                 </ul>
+
                 <div class="sidebar-divider"></div>
                 <div class="nav-title">Members</div>
                 <ul class="nav flex-column">
+                    <!-- Links to member-related pages -->
                     <li class="nav-item"><a href="auto_validation_personals.html" class="nav-link">Personals</a></li>
                     <li class="nav-item"><a href="auto_validation_redeem.html" class="nav-link">Redeem</a></li>
                 </ul>
+
                 <div class="sidebar-divider"></div>
                 <ul class="nav flex-column">
+                    <!-- Links to About Us and Contact Us pages -->
                     <li class="nav-item"><a href="aboutus.html" class="nav-link">About Us</a></li>
                     <li class="nav-item" style="padding-bottom: 20px"><a href="contactus.html" class="nav-link">Contact Us</a></li>
                 </ul>
             </div>
         </nav>
+
+        <!-- Main content -->
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <section id="about">
-                <h1 style="padding-top: 20px; font-size: 3rem" class="name">Sérenade Bistro</h1><span> by Delicious Food Pte. Ltd.</span><p></p>
-
+                <h1 style="padding-top: 20px; font-size: 3rem" class="name">Sérenade Bistro</h1><span> by Delicious Food Pte. Ltd.</span>
+                <!-- Project Overview -->
                 <h3 style="padding-top: 15px">Project Overview</h3>
                 <p>Welcome to our project implementation for a Restaurant Food Ordering System.</p>
-
+                <!-- Purpose -->
                 <h3 style="padding-top: 10px">Our Purpose</h3>
                 <img src="assets/waiters.png" alt="Restaurant Waiters" height="200px" style="margin-top: 10px; margin-bottom: 15px">
-                <p>Our system allows customers to order their foods via bring-your-own-device (BYOD). With the intention to help cut down on the operational cost and providing customers with a enhanced ordering experience!</p>
-
+                <p>Our system allows customers to order their foods via bring-your-own-device (BYOD), aiming to reduce operational costs and enhance the ordering experience.</p>
+                <!-- Innovative Features -->
                 <h3 style="padding-top: 10px">Innovative Features</h3>
-                <p>What sets us apart? Our system incorporates innovative features such as personalized menu recommendations and remembering your latest order to make deciding easier!</p>
-
+                <p>Our system incorporates innovative features such as personalized menu recommendations and remembering your latest order to make deciding easier.</p>
+                <!-- Hardware Infrastructure -->
                 <h3 style="padding-top: 10px">Hardware Infrastructure</h3>
-                <p>To deliver a seamless experience, allowing customers to access our menu page on any web browser, we used AWS Cloud EC2 instance to host our webpage! This scalable and reliable setup ensures optimal performance and accessibility.</p>
-
+                <p>To deliver a seamless experience, allowing customers to access our menu page on any web browser, we used AWS Cloud EC2 instance to host our webpage, ensuring optimal performance and accessibility.</p>
                 <hr style="margin-top: 30px; margin-bottom: 20px">
-
+                <!-- Team Introduction -->
                 <h3 style="padding-top: 5px">Team Introduction</h3>
                 <p>Meet our dedicated team members who have brought this project to life.</p>
+
+                <!-- Team members with images and roles -->
                 <div class="team-member">
                     <img src="assets/kani.jpeg" width="120dp" height="165dp">
                     <p style="padding-top: 15px"><strong>Then Kah Nyee</strong> - Project Manager [User Database / Fullstack]</p>
@@ -121,63 +134,66 @@
                     <hr>
                 </div>
 
+                <!-- Project Contributions -->
                 <h3 style="padding-top: 5px; padding-bottom: 10px">Project Contributions</h3>
-
                 <div>
                     <h5 style="text-decoration: underline; padding-bottom: 10px">Kah Nyee</h5>
-                    <p style="margin-bottom: 10px"><strong>Project Management</strong> - Organise group meetings to check on group progress.</p>
-                    <p style="margin-bottom: 10px"><strong>Start Page</strong> - Designed start.html page UI.</p>
-                    <p style="margin-bottom: 10px"><strong>Side Bar</strong> - Implemented side navigation bar to all pages of the website.</p>
-                    <p style="margin-bottom: 10px"><strong>Members Login / Sign Up Page</strong> - Implemented member login / sign up feature with firebase authentication.</p>
-                    <p style="margin-bottom: 10px"><strong>User Account Database Setup</strong> - Setup user account database to have point system.</p>
-                    <p style="margin-bottom: 10px"><strong>Payment Page</strong> - Integrated payment logic to paypal sandbox.</p>
-                    <p style="margin-bottom: 10px"><strong>Redeem Page</strong> - Integrated point calculation and redeem page to sync with user point field on firestore database.</p>
-                    <p style="margin-bottom: 10px"><strong>AWS EC2 Cloud Deployment</strong> - Deployed website to AWS EC2 to be accessed from anywhere.</p>
+                    <p style="margin-bottom: 10px"><strong>Project Management:</strong> Orchestrated group meetings to monitor project progress.</p>
+                    <p style="margin-bottom: 10px"><strong>Start Page:</strong> Designed the user interface for the start.html page.</p>
+                    <p style="margin-bottom: 10px"><strong>Side Bar:</strong> Implemented a consistent side navigation bar across all website pages.</p>
+                    <p style="margin-bottom: 10px"><strong>Members Login / Sign Up Page:</strong> Successfully integrated member login and sign-up functionality using Firebase authentication.</p>
+                    <p style="margin-bottom: 10px"><strong>User Account Database Setup:</strong> Established a user account database with a name and points system.</p>
+                    <p style="margin-bottom: 10px"><strong>Payment Page:</strong> Integrated payment logic for PayPal Sandbox.</p>
+                    <p style="margin-bottom: 10px"><strong>Redeem Page:</strong> Implemented point calculation and redemption features, syncing with the user point field in the Firestore database.</p>
+                    <p style="margin-bottom: 10px"><strong>AWS EC2 Cloud Deployment:</strong> Successfully deployed the website on AWS EC2 for web wide access.</p>
 
                     <hr style="margin-top: 25px">
 
                     <h5 style="text-decoration: underline; padding-bottom: 10px">Shaun</h5>
-                    <p style="margin-bottom: 10px"><strong>Contact Us Page</strong> - Setup contactus.html to resize on different views.</p>
-                    <p style="margin-bottom: 10px"><strong>Menu Database Integration</strong> - Integrated menu database with menu page to display the various menu items.</p>
-                    <p style="margin-bottom: 10px"><strong>Seasonal Slideshow</strong> - Implemented slideshow to display seasonal menu items.</p>
-                    <p style="margin-bottom: 10px"><strong>Menu Page</strong> - Implemented adding / removing food item and calculation of total cost at top right of the screen.</p>
-                    <p style="margin-bottom: 10px"><strong>Order List Page</strong> - Assisted in menu page sync with order list page.</p>
-                    <p style="margin-bottom: 10px"><strong>Saving Order</strong> - Implemented order saving to individual user account in firestore.</p>
+                    <p style="margin-bottom: 10px"><strong>Contact Us Page:</strong> Configured the contactus.html page to adapt to various screen sizes.</p>
+                    <p style="margin-bottom: 10px"><strong>Menu Database Integration:</strong> Integrated the menu database with the menu page to display various menu items.</p>
+                    <p style="margin-bottom: 10px"><strong>Seasonal Slideshow:</strong> Implemented a slideshow to showcase seasonal menu items.</p>
+                    <p style="margin-bottom: 10px"><strong>Menu Page:</strong> Contributed to adding/removing food items and calculating the total cost at the top right of the screen.</p>
+                    <p style="margin-bottom: 10px"><strong>Order List Page:</strong> Assisted in synchronizing the menu page with the order list page.</p>
+                    <p style="margin-bottom: 10px"><strong>Saving Order:</strong> Implemented the feature to save orders to individual user accounts in Firestore.</p>
 
                     <hr style="margin-top: 25px">
 
                     <h5 style="text-decoration: underline; padding-bottom: 10px">Austin</h5>
-                    <p style="margin-bottom: 10px"><strong>Menu Database Setup</strong> - Setup menu database on firestore database with image storage in firebase storage.</p>
-                    <p style="margin-bottom: 10px"><strong>About Us Page</strong> - Designed aboutus.html page.</p>
-                    <p style="margin-bottom: 10px"><strong>Order Success Page</strong> - Implemented showing of confirmed order, and clearing of session data.</p>
-                    <p style="margin-bottom: 10px"><strong>Order List Page</strong> - Implemented order list logic to display items in the cart.</p>
+                    <p style="margin-bottom: 10px"><strong>Menu Database Setup:</strong> Established the menu database in Firestore with image storage in Firebase Storage.</p>
+                    <p style="margin-bottom: 10px"><strong>About Us Page:</strong> Designed the layout for the aboutus.html page.</p>
+                    <p style="margin-bottom: 10px"><strong>Order Success Page:</strong> Implemented the display of confirmed orders and clearing of session data.</p>
+                    <p style="margin-bottom: 10px"><strong>Order List Page:</strong> Developed the logic for displaying items in the shopping cart on the order list page.</p>
 
                     <hr style="margin-top: 25px">
 
                     <h5 style="text-decoration: underline; padding-bottom: 10px">Benjamin</h5>
-                    <p style="margin-bottom: 10px"><strong>Contact Us Page</strong> - Designed basic contactus.html layout.</p>
-                    <p style="margin-bottom: 10px"><strong>Payment Page</strong> - Researched on paypal sandbox.</p>
-                    <p style="margin-bottom: 10px"><strong>User Account Database Setup</strong> - Setup user account database to save order history.</p>
-                    <p style="margin-bottom: 10px"><strong>Personals Page</strong> - Implemented account based personal recommendations and display past orders.</p>
+                    <p style="margin-bottom: 10px"><strong>Start Page:</strong> Created the start page for accessing the menu.html page.</p>
+                    <p style="margin-bottom: 10px"><strong>Contact Us Page:</strong> Designed the layout for the contactus.html page.</p>
+                    <p style="margin-bottom: 10px"><strong>Payment Page:</strong> Conducted research on PayPal Sandbox integration.</p>
+                    <p style="margin-bottom: 10px"><strong>User Account Database Setup:</strong> Set up the user account database to store order history.</p>
+                    <p style="margin-bottom: 10px"><strong>Personals Page:</strong> Implemented personalized recommendations based on user accounts and displayed past orders.</p>
 
                     <hr style="margin-top: 25px">
 
                     <h5 style="text-decoration: underline; padding-bottom: 10px">Naing</h5>
-                    <p style="margin-bottom: 10px"><strong>Start Page</strong> - Implemented start page to access menu.html page.</p>
-                    <p style="margin-bottom: 10px"><strong>Redeem Page</strong> - Implemented user point redemption.</p>
+                    <p style="margin-bottom: 10px"><strong>Redeem Page:</strong> Developed the user point redemption feature.</p>
                 </div>
 
                 <hr style="margin-top: 30px; margin-bottom: 20px">
 
+                <!-- Conclusion -->
                 <h3 style="padding-top: 5px">Conclusion</h3>
-                <p>With innovative features and a dedicated team, we are committed to provide customers with a seamless experience!</p>
-
+                <p>With innovative features and a dedicated team, we are committed to providing customers with a seamless experience!</p>
+                <!-- Extras -->
                 <h3 style="padding-top: 5px">Extras</h3>
                 <p style="padding-bottom: 10px">Feel free to ask any queries you may have!</p>
             </section>
         </main>
     </div>
 </div>
+
+<!-- Include JavaScript files -->
 <script src="sidebar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

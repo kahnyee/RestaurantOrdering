@@ -13,6 +13,9 @@ const db = firebase.firestore();
 
 let currentOrder = [];
 const userId = sessionStorage.getItem("userUID");
+const username = sessionStorage.getItem("name");
+
+document.getElementById("name").innerHTML = "Welcome back, "+username+"!";
 
 function getMenuItems(menuType) {
     const container = document.getElementById("personalMenu");
@@ -49,14 +52,14 @@ function getMenuItems(menuType) {
                 </div>
             `;
 
-// Plus icon click event
+            // Plus icon click event
             itemDiv.querySelector('.plus').addEventListener('click', function() {
                 itemData.quantity++; // Increase by 1
                 itemDiv.querySelector('.quantity').textContent = itemData.quantity;
                 addToOrder(itemData);
             });
 
-// Minus icon click event
+            // Minus icon click event
             itemDiv.querySelector('.minus').addEventListener('click', function() {
                 if (itemData.quantity > 0) {
                     itemData.quantity--; // Decrease by 1
@@ -129,15 +132,12 @@ function fetchOrderItems(orderRef) {
     });
 }
 
-
 function addOrderToCart(orderItems) {
     orderItems.forEach(item => addToOrder(item));
     updateCartTotal();
     saveOrderToSession();
     window.location.href = 'orders.html';
 }
-
-
 
 // Functions to manage the order
 function addToOrder(item) {
@@ -175,13 +175,14 @@ function removeFromOrder(item) {
     updateCartTotal();
     saveOrderToSession(); // Save to session after adding item
 
-
     console.log("Current Order:", currentOrder);
 }
+
 function updateCartTotal() {
     let totalAmount = currentOrder.reduce((total, item) => total + (item.quantity * item.price), 0);
     document.getElementById('cart-total-amount').textContent = `$${totalAmount.toFixed(2)}`;
 }
+
 function saveOrderToSession() {
     sessionStorage.setItem('currentOrder', JSON.stringify(currentOrder));
 }
@@ -200,8 +201,6 @@ function loadOrderFromSession() {
     }
 }
 
-
-// Initialize
 function initialize() {
     getMenuItems("appetisers");
     getMenuItems("mains");
@@ -212,7 +211,26 @@ function initialize() {
     loadOrderFromSession();
     updateCartTotal();
     getLatestOrder();
+
+    const nameText = document.getElementById("name");
+    const firstText = document.getElementById("first");
+
+    const userRef = db.collection('User').doc(userId);
+    const previousOrdersRef = userRef.collection('PreviousOrders').doc('PreviousOrders');
+
+    previousOrdersRef.get().then(doc => {
+        if (doc.exists && doc.data().lastOrderNumber) {
+            document.getElementById("name").innerHTML = "Welcome back, "+username+"!";
+            document.getElementById("first").innerHTML = "Based on your past orders, these seem to be your favourites!";
+        } else {
+            document.getElementById("name").innerHTML = "Nice to meet you, "+username+"!";
+            document.getElementById("first").innerHTML = "Let's get started on ordering!";
+        }
+    }).catch(error => {
+        console.error("Error checking previous orders: ", error);
+    });
 }
+
 function displayItem(itemData) {
     const container = document.getElementById('orderListContainer'); // Make sure this is the correct ID
     const itemDiv = document.createElement("div");

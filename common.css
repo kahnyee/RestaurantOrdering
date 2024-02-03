@@ -1,63 +1,89 @@
+/* Global styling for the body */
 body {
     background-color: #494949;
     color: #B0B0B0;
 }
 
+/* Hide the scrollbar in scrollable sections */
 .scrollable-section::-webkit-scrollbar {
     display: none;
 }
+
+/* Styling for scrollable sections */
 .scrollable-section {
     -ms-overflow-style: none;
     scrollbar-width: none;
     max-height: 100vh;
     overflow-y: auto;
 }
+
+/* Sidebar styling */
 .sidebar {
     background-color: #303030;
     color: white;
     font-family: 'Roboto', sans-serif;
 }
+
+/* Sticky positioning for sidebar */
 .sidebar-sticky {
     position: sticky;
     top: 0;
     padding-top: 20px;
 }
+
+/* Styling for sidebar headings */
 .sidebar h2, .sidebar h1 {
     text-align: center;
 }
+
 .sidebar h2 {
     font-size: xx-large;
     margin-bottom: 0;
 }
+
 .sidebar h1 {
     font-size: 4rem;
     margin-top: 0;
     margin-bottom: 20px;
 }
+
+/* Styling for navigation links */
 .nav-link {
     color: white;
     padding: 10px 15px;
 }
+
+/* Hover and focus states for navigation links */
 .nav-link:hover, .nav-link:focus {
     color: #f8f9fa;
     text-decoration: none;
     background-color: #495057;
 }
+
+/* Styling for navigation items */
 .nav-item {
     margin-bottom: 1rem;
 }
+
+/* Remove margin from the last navigation item */
 .nav-item:last-child {
     margin-bottom: 0;
 }
+
+/* Styling for active navigation links */
 .nav-item .nav-link.active {
     background-color: #494949;
     border-radius: 0.25rem;
 }
+
+/* Styling for sidebar dividers */
 .sidebar-divider {
     border-bottom: 1px solid #484848;
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+/* Styling for navigation titles */
 .nav-title {
     font-size: larger;
     font-weight: bold;
@@ -65,13 +91,20 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
 }
+
+/* Styling for subitem navigation links */
 .nav-subitem .nav-link {
     padding-left: 30px;
 }
+
+/* Styling for section headings */
 section h2 {
     font-size: 2.5rem;
 }
+
+/* Media query for smaller screens */
 @media (max-width: 767px) {
+    /* Sidebar styling for mobile */
     .sidebar {
         position: fixed;
         top: 0;
@@ -81,9 +114,13 @@ section h2 {
         width: 250px;
         transition: left 0.3s;
     }
+
+    /* Show sidebar on mobile */
     .sidebar.show {
         left: 0;
     }
+
+    /* Styling for the mobile navigation button */
     .btn.btn-primary.d-md-none {
         position: fixed;
         left: 8px;
@@ -97,6 +134,8 @@ section h2 {
         padding-left: 15px;
         padding-right: 15px;
     }
+
+    /* Styling for the mobile background */
     .mobile-bg {
         position: fixed;
         top: 0;
@@ -107,21 +146,12 @@ section h2 {
         z-index: 1049;
         opacity: 1;
     }
-}
-@media (max-width: 767px) {
-    .sidebar {
-        position: fixed;
-        top: 25px; /* Shift sidebar down by 35px */
-        left: -250px;
-        bottom: 0;
-        z-index: 1000;
-        width: 250px;
-        transition: left 0.3s;
-    }
+
+    /* Adjust scrollable section for mobile */
     .scrollable-section {
         -ms-overflow-style: none;
         scrollbar-width: none;
-        max-height: calc(100vh - 35px);
+        max-height: calc(100vh - 35px); /* Adjusted for mobile sidebar height */
         overflow-y: auto;
         margin-top: 25px;
     }

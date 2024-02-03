@@ -26,7 +26,6 @@ function updateTotals() {
     document.getElementById('total').textContent = `Total: $${total.toFixed(2)}`;
 }
 
-
 function changeQuantity(index, isAdding) {
     let itemPrice = cartItem[index].price; // Get the price of the item
     let discounted = parseInt(sessionStorage.getItem('total'));
@@ -52,7 +51,6 @@ function changeQuantity(index, isAdding) {
     sessionStorage.setItem('currentOrder', JSON.stringify(cartItem));
     sessionStorage.setItem('total', String(counted));
 }
-
 
 function displayOrderedItemsAndTotal() {
     const orderListContainer = document.getElementById('orderListContainer');
@@ -85,8 +83,8 @@ function displayOrderedItemsAndTotal() {
     } else {
         document.getElementById('totals-container').style.display = 'block';
     }
-
 }
+
 function redirectToPaymentPage() {
     sessionStorage.setItem('total', total);
     window.location.href = 'payment.html';
@@ -96,7 +94,6 @@ function redirectToPaymentPage() {
 displayOrderedItemsAndTotal();
 updateTotals();
 sessionStorage.setItem('total', total);
-
 
 // Save cartItem back to sessionStorage if needed
 window.onbeforeunload = function() {

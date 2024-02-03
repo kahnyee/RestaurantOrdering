@@ -25,7 +25,6 @@ var cartItem = JSON.parse(sessionStorage.getItem('currentOrder')) || [];
 let total = 0;
 
 // Function to clear cart and total from sessionStorage by setting them to blank
-
 function displayOrderedItemsAndTotal() {
     const orderListContainer = document.getElementById('orderListContainer');
     orderListContainer.innerHTML = ""; // Clear the container before re-rendering
@@ -54,6 +53,7 @@ function displayOrderedItemsAndTotal() {
         document.getElementById('totals-container').style.display = 'block';
     }
 }
+
 function getCategoryByName(itemName) {
     // Define mappings of item names to categories
     const categoryMappings = {
@@ -118,7 +118,6 @@ function getCategoryByName(itemName) {
     return categoryMappings[itemName] || defaultCategory;
 }
 
-
 async function uploadOrderHistorySequentially() {
     const userUID = sessionStorage.getItem('userUID');
     if (!userUID) {
@@ -170,9 +169,6 @@ async function uploadOrderHistorySequentially() {
     }
 }
 
-
-
-
 function updateTotals() {
     let subtotal = cartItem.reduce((acc, item) => acc + (item.price * item.quantity), 0);
     let discount = parseInt(sessionStorage.getItem('discounts'));
@@ -209,7 +205,6 @@ function savePoints() {
         .catch(error => console.error("Error updating points:", error));
 }
 
-
 function calculatePointsBasedOnTotal(total) {
     let points = 0;
 
@@ -223,6 +218,7 @@ function calculatePointsBasedOnTotal(total) {
 
     return Math.floor(points); // Truncate the points to a whole number
 }
+
 function updatePointsDisplay(points) {
     // Assuming you have an element with id 'points-display' to show the points
     const pointsDisplay = document.getElementById('points-display');
@@ -273,8 +269,6 @@ function uploadOrderToFirestore() {
         alert("Error uploading order: " + error.message);
     });
 }
-
-
 
 // Initialize display and totals on page load
 displayOrderedItemsAndTotal();

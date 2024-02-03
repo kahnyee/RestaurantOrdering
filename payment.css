@@ -2,6 +2,7 @@
     #alternative-payment p {
         margin-bottom: 10px; /* Ensures a little space between the text and the button */
     }
+
     #cash-payment-button {
         width: 100%; /* Makes the button full width */
     }

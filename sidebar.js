@@ -4,6 +4,7 @@ function toggleSidebar() {
     let mobileBg = document.getElementById("mobileBg");
     mobileBg.classList.toggle("show");
 }
+
 document.addEventListener('click', function(event) {
     let sidebar = document.getElementById("sidebar");
     let clickInsideSidebar = sidebar.contains(event.target);
@@ -18,6 +19,7 @@ document.addEventListener('click', function(event) {
         navBar.classList.remove("shift-down");
     }
 });
+
 let sidebarLinks = document.querySelectorAll('#sidebar .nav-link');
 sidebarLinks.forEach(link => {
     link.addEventListener('click', function() {
