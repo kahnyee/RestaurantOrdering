@@ -577,12 +577,20 @@ function addToOrder(item) {
         if (isNaN(orderItem.quantity)) {
             orderItem.quantity = 0;
         }
-        orderItem.quantity += 1;
+        // Check if the item is seasonal, and if so, use the discounted price
+        if (item.hasOwnProperty('discounted_price')) {
+            orderItem.quantity += 1;
+            orderItem.price = item.discounted_price; // Use discounted price
+        } else {
+            orderItem.quantity += 1;
+        }
     } else {
         // Add new item to currentOrder with quantity initialized to 1
         currentOrder.push({
             ...item,
-            quantity: 1
+            quantity: 1,
+            // Check if the item is seasonal, and if so, use the discounted price
+            price: item.hasOwnProperty('discounted_price') ? item.discounted_price : item.price
         });
     }
     updateCartTotal();
