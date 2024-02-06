@@ -119,23 +119,16 @@
             // Retrieve the total in USD from sessionStorage
             const totalInUSD = parseFloat(sessionStorage.getItem('total'));
 
-            // Define the conversion rate from USD to SGD
-            const conversionRate = totalInUSD * 0.7169879; // 1 USD = 0.7169879 SGD
-
-            // Format the total with two decimal places
-            const formattedTotal = conversionRate.toFixed(2);
-
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        currency: 'SGD', // Use SGD as the currency
-                        value: formattedTotal // Pass the converted total in SGD
+                        value: totalInUSD // Pass the converted total in SGD
                     }
                 }]
             });
         },
         onApprove: function(data, actions) {
-            window.location.href = 'reviews.html';
+            window.location.href = 'success.html';
         }
     }).render('#paypal-button-container');
 
