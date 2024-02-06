@@ -201,11 +201,21 @@
         left: auto; /* Adjust position as needed */
         z-index: 1000;
         background-color: #494949;
-        border: 2px solid pink;
+        border: 1px solid grey;
         padding: 5px 10px;
         border-radius: 5px;
     }
 
+    #name {
+        margin-top: 5px;
+        margin-left: 5px;
+        font-size: 1.8em;
+    }
+
+    #first {
+        margin-top: 10px;
+        margin-left: 5px;
+    }
 }
 
 .shopping-cart-container:hover {
