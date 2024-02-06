@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Payments Page</title>
+    <title>Reviews Page</title>
     <!-- Link to Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Link to Font Awesome icons -->
@@ -14,7 +14,7 @@
     <!-- Link to common CSS file -->
     <link href="common.css" rel="stylesheet" type="text/css">
     <!-- Link to specific CSS for this page -->
-    <link href="payment.css" rel="stylesheet" type="text/css">
+    <link href="reviews.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -88,18 +88,28 @@
             </div>
         </nav>
 
-        <!-- Main Content -->
+        <!-- Main content -->
         <main class="col-12 col-md-9 col-lg-10 px-md-4 scrollable-section shift-down">
             <div class="d-flex align-items-center justify-content-center" style="min-height: 90vh;">
                 <div class="container mt-5">
                     <div class="row">
                         <div class="col-md-6 offset-md-3">
-                            <!-- Payment Information -->
-                            <h2 id="order_total" style="margin-bottom: 15px"></h2>
-                            <div id="paypal-button-container"></div>
-                            <div class="d-flex flex-column align-items-center" id="alternative-payment">
-                                <p>OR</p>
-                                <button class="btn btn-success" id="cash-payment-button">Pay with Cash</button>
+                            <div class="signup-form">
+                                <h1 class="text-center" style="margin-bottom: 10px;">Leave us a review!</h1>
+                                <form id="loginForm" onsubmit="event.preventDefault(); validateLogin();">
+                                    <div class="form-group" style="margin-bottom: 10px">
+                                        <label for="email">Email Address</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" id="password" required>
+                                    </div>
+                                    <button type="submit" class="btn-primary btn-block mt-4" style="background-color: #303030; color: #B0B0B0; height: 35px; width: 70px">Login</button>
+                                </form>
+                                <div class="text-center mt-3">
+                                    Haven't created an account? <a href="members_signup_personals.html">Sign up here</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -109,48 +119,9 @@
     </div>
 </div>
 
-<!-- Paypal Logic -->
-<script src="https://www.paypal.com/sdk/js?client-id=AaDiPhP3RPp7I1ihZXaaVQEnyoGQPC877e2AAJQkTQfHQtyoXFvVvjbVRVqQeYDn5ijyshDNmsRZVQEY"></script>
-<script>
-    document.getElementById('order_total').innerHTML = "Total: $" + parseFloat(sessionStorage.getItem('total')).toFixed(2);
-
-    paypal.Buttons({
-        createOrder: function(data, actions) {
-            // Retrieve the total in USD from sessionStorage
-            const totalInUSD = parseFloat(sessionStorage.getItem('total'));
-
-            // Define the conversion rate from USD to SGD
-            const conversionRate = totalInUSD * 0.7169879; // 1 USD = 0.7169879 SGD
-
-            // Format the total with two decimal places
-            const formattedTotal = conversionRate.toFixed(2);
-
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        currency: 'SGD', // Use SGD as the currency
-                        value: formattedTotal // Pass the converted total in SGD
-                    }
-                }]
-            });
-        },
-        onApprove: function(data, actions) {
-            window.location.href = 'reviews.html';
-        }
-    }).render('#paypal-button-container');
-
-
-    document.getElementById('cash-payment-button').addEventListener('click', function() {
-        // Logic to handle cash payment confirmation
-        // For now, simply redirect to the success page as a simulation
-        window.location.href = 'cash.html';
-    });
-
-</script>
-
 <!-- Include JavaScript files -->
 <script src="sidebar.js"></script>
-<script src="orders.js"></script>
+<script src="reviews.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMneT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
