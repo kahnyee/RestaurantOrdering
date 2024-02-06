@@ -15,19 +15,22 @@ const db = firebase.firestore(app);
 // Function to retrieve points
 async function getPoints() {
     try {
-        const userUID = sessionStorage.getItem('userUID'); // Retrieve user UID from sessionStorage
+        const userUID = sessionStorage.getItem('userUID');
         if (!userUID) throw new Error('No user UID found in sessionStorage.');
 
         const userDoc = await db.collection('User').doc(userUID).get();
         if (!userDoc.exists) throw new Error('User document does not exist.');
 
-        const userData = userDoc.data();
-        return userData.points;
+        const userData = userDoc.data() || {};
+        // Ensure points are initialized. If not present, default to 200
+        const points = userData.points !== undefined ? userData.points : 200;
+        return points;
     } catch (error) {
         console.error('Error getting points:', error);
-        return null;
+        return 200; // Default to 200 if there's an error fetching points
     }
 }
+
 
 initializeSessionAfterLogin();
 
